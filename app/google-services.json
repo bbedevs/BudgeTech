@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "600098811576",
+    "firebase_url": "https://budgetech-84963.firebaseio.com",
+    "project_id": "budgetech-84963",
+    "storage_bucket": "budgetech-84963.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600098811576:android:7ec321104eec90c4014e4d",
+        "android_client_info": {
+          "package_name": "com.mm.budgetech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "600098811576-tcdu4okf2cq46fedb2gf65v89t33u17q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7b6YU0Euxk9wP-FvpJXyLZWRxRf4UjDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "600098811576-tcdu4okf2cq46fedb2gf65v89t33u17q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
