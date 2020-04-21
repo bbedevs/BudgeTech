@@ -8,4 +8,5 @@
     <color name="appBackground">#F8FDFF</color>"
     <color name="appIcons">#666666</color>
     <color name="white">#FFFFFF</color>
+    <color name="appSecondaryColor"> #29abab</color>
 </resources>
