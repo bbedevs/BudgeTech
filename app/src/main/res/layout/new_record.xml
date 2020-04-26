@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.budgeting.add_budget">
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/appPrimaryColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </View>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:text="Choose these following Categories to divide your expenses"
+        android:textColor="@color/appIcons"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </TextView>
+
+
+            <androidx.cardview.widget.CardView
+
+                android:outlineSpotShadowColor="@color/appPrimaryColor"
+                android:id="@+id/maincard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="80dp"
+                android:layout_marginBottom="50dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                >
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="580dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="top"
+                        android:padding="20dp">
+                        <TextView
+                            android:id="@+id/Cancel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:layout_gravity="top|left"
+                            android:textStyle="bold"
+                             android:text="cancel"
+                            android:textColor="@color/appPrimaryColor"
+                            android:textSize="14sp"
+
+                            >
+                        </TextView>
+                        <TextView
+                            android:id="@+id/add_record"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"
+                            android:text="add record"
+                            android:textColor="@color/appFonts"
+                            android:textSize="22sp"
+                            android:textAlignment="center"
+                            android:elevation="15dp"
+                            >
+                        </TextView>
+                        <View
+                            android:layout_width="80dp"
+                            android:layout_height="2dp"
+                            android:layout_gravity="center"
+                            android:background="@color/appPrimaryColor"
+                            android:layout_marginTop="3dp"
+                            android:padding="10dp"
+                            />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="10dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:textStyle="bold"
+                                android:text="Choose Category"
+                                android:textColor="@color/appFonts"
+                                android:textSize="16sp"
+                                android:layout_gravity="left"
+                                />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_gravity="top|center"
+                                    android:padding="10dp"
+                                    >
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_gravity="left"
+                                        android:fadeScrollbars="true"
+                                        android:isScrollContainer="true"
+                                        android:padding="5dp">
+                                        <ImageView
+                                            android:layout_width="70dp"
+                                            android:layout_height="70dp"
+                                            android:layout_gravity="center"
+                                            android:contentDescription="string/content_description_media"
+                                            android:scaleType="fitStart"
+                                            android:clickable="true"
+                                           android:elevation="8dp"
+
+
+                                            android:outlineSpotShadowColor="@color/appPrimaryColor"
+                                            app:srcCompat="@drawable/messenger_bubble_large_blue" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textStyle="bold"
+                                            android:text="Personal"
+                                            android:textColor="@color/appFonts"
+                                            android:textSize="12sp"
+                                            android:layout_gravity="center"
+                                            />
+                                        <ImageView
+                                            android:layout_width="70dp"
+                                            android:layout_height="70dp"
+                                            android:layout_gravity="center"
+                                            android:contentDescription="string/content_description_media"
+                                            android:scaleType="fitStart"
+                                            app:srcCompat="@drawable/messenger_bubble_large_blue" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textStyle="bold"
+                                            android:text="Housing"
+                                            android:textColor="@color/appFonts"
+                                            android:textSize="12sp"
+                                            android:layout_gravity="center"
+                                            />
+                                        <ImageView
+                                            android:layout_width="70dp"
+                                            android:layout_height="70dp"
+                                            android:layout_gravity="center"
+                                            android:contentDescription="string/content_description_media"
+                                            android:scaleType="fitStart"
+                                            app:srcCompat="@drawable/messenger_bubble_large_blue" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textStyle="bold"
+                                            android:text="Debt Payment"
+                                            android:textColor="@color/appFonts"
+                                            android:textSize="12sp"
+                                            android:layout_gravity="center"
+                                            />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_gravity="center"
+                                        android:padding="5dp">
+                                        <ImageView
+                                            android:layout_width="70dp"
+                                            android:layout_height="70dp"
+                                            android:layout_gravity="center"
+                                            android:contentDescription="string/content_description_media"
+                                            android:scaleType="fitStart"
+                                            app:srcCompat="@drawable/messenger_bubble_large_blue" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textStyle="bold"
+                                            android:text="Food"
+                                            android:textColor="@color/appFonts"
+                                            android:textSize="12sp"
+                                            android:layout_gravity="center"
+
+                                            />
+                                        <ImageView
+
+                                            android:layout_width="70dp"
+                                            android:layout_height="70dp"
+                                            android:layout_gravity="center"
+                                            android:contentDescription="string/content_description_media"
+                                            android:scaleType="fitStart"
+                                            app:srcCompat="@drawable/messenger_bubble_large_blue" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textStyle="bold"
+                                            android:text="Utilities/Bills"
+                                            android:textColor="@color/appFonts"
+                                            android:textSize="12sp"
+                                            android:layout_gravity="center"
+                                            />
+                                        <ImageView
+
+                                            android:layout_width="70dp"
+                                            android:layout_height="70dp"
+                                            android:layout_gravity="center"
+                                            android:contentDescription="string/content_description_media"
+                                            android:scaleType="fitStart"
+                                            app:srcCompat="@drawable/messenger_bubble_large_blue" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textStyle="bold"
+                                            android:text="Savings"
+                                            android:textColor="@color/appFonts"
+                                            android:textSize="12sp"
+                                            android:layout_gravity="center"
+                                            />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_gravity="center"
+                                        android:padding="5dp">
+                                        <ImageView
+                                            android:layout_width="70dp"
+                                            android:layout_height="70dp"
+                                            android:layout_gravity="center"
+                                            android:contentDescription="string/content_description_media"
+                                            android:scaleType="fitStart"
+                                            app:srcCompat="@drawable/messenger_bubble_large_blue" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textStyle="bold"
+                                            android:text="Medicine"
+                                            android:textColor="@color/appFonts"
+                                            android:textSize="12sp"
+                                            android:layout_gravity="center"
+                                            />
+                                        <ImageView
+                                            android:layout_width="70dp"
+                                            android:layout_height="70dp"
+                                            android:layout_gravity="center"
+                                            android:contentDescription="string/content_description_media"
+                                            android:scaleType="fitStart"
+                                            app:srcCompat="@drawable/messenger_bubble_large_blue" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textStyle="bold"
+                                            android:text="Transport"
+                                            android:textColor="@color/appFonts"
+                                            android:textSize="12sp"
+                                            android:layout_gravity="center"
+                                            />
+                                        <ImageView
+                                            android:layout_width="70dp"
+                                            android:layout_height="70dp"
+                                            android:layout_gravity="center"
+                                            android:contentDescription="string/content_description_media"
+                                            android:scaleType="fitStart"
+                                            app:srcCompat="@drawable/messenger_bubble_large_blue" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textStyle="bold"
+                                            android:text="Investing"
+                                            android:textColor="@color/appFonts"
+                                            android:textSize="12sp"
+                                            android:layout_gravity="center"
+                                            />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="20dp">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/textInput1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                style="@style/TextInputLayoutStyle"
+                                app:hintTextAppearance="@style/AuthLabels">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/addamount"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/edit_text_layout"
+                                    android:drawableStart="@drawable/baseline_account_circle_24"
+                                    android:drawablePadding="5dp"
+                                    android:drawableTint="@color/appIcons"
+                                    android:hint="Add Amount in PKR .."
+                                    android:inputType="text"
+                                    android:padding="5dp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/textInput2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                style="@style/TextInputLayoutStyle"
+                                app:hintTextAppearance="@style/AuthLabels">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/addDescription"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:background="@drawable/edit_text_layout"
+                                    android:drawableStart="@drawable/baseline_account_circle_24"
+                                    android:drawablePadding="5dp"
+                                    android:drawableTint="@color/appIcons"
+                                    android:hint="Add Discription here ..."
+                                    android:textAlignment="textStart"
+                                    android:inputType="text"
+                                    android:padding="5dp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </ScrollView>
+
+
+
+            </androidx.cardview.widget.CardView>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floating2"
+                style="@style/Widget.MaterialComponents.FloatingActionButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="bottom|right"
+                android:backgroundTint="@color/appPrimaryColor"
+                android:tint="@color/white"
+                app:srcCompat="@drawable/baseline_arrow_forward_24"
+                app:layout_constraintBottom_toBottomOf="@id/maincard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/maincard"
+                app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                />
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
