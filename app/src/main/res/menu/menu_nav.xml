@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/item1"
+    android:title="Home"
+    android:icon="@drawable/baseline_account_circle_24"
+    android:enabled="true"
+    android:iconTint="@color/appBackground"
+
+    android:tooltipText="Cick to see Menu"
+    />
+    <item
+        android:id="@+id/item2"
+        android:title="Chat Bot"
+        android:icon="@drawable/com_facebook_button_send_icon_blue"
+
+        />
+    <item
+        android:id="@+id/item3"
+        android:title="Settings"
+        android:icon="@drawable/com_facebook_button_send_icon_blue"
+
+    />
+
+    <item
+        android:id="@+id/item4"
+        android:title="Notifications"
+        android:icon="@drawable/com_facebook_button_send_icon_blue"
+
+        />
+</menu>
