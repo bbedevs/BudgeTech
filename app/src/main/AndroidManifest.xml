@@ -10,15 +10,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".services.budgeting.manage_records">
-
+        android:theme="@style/AppTheme"
+        >
+        <activity android:name=".ExpenseGoals">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".views.budgeting.Expense_Savings">
+        </activity>
+        <activity android:name=".services.budgeting.manage_records" />
         <activity android:name=".views.auth.sign_in" />
         <activity android:name=".views.budgeting.estimated_monthly_expense" />
 
@@ -46,13 +48,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".views.auth.sign_up"></activity>
+        <activity android:name=".views.auth.sign_up" />
         <activity android:name=".views.user_info.user_information">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
