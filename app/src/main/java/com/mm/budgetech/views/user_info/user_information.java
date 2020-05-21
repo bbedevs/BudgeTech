@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatSpinner;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -14,6 +15,9 @@ import com.mm.budgetech.model.User;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mm.budgetech.R;
+import com.mm.budgetech.services.budgeting.setUserInfo;
+import com.mm.budgetech.views.budgeting.estimated_monthly_expense;
+
 
 public class user_information extends AppCompatActivity {
     
@@ -27,6 +31,8 @@ public class user_information extends AppCompatActivity {
 
     FloatingActionButton next;
 
+    setUserInfo info;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,7 @@ public class user_information extends AppCompatActivity {
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setCustomView(R.layout.actionbar_layout);
 
+        info = new setUserInfo();
 
         email = findViewById(R.id.info_email);
         phone = findViewById(R.id.info_phone);
@@ -51,22 +58,15 @@ public class user_information extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         bankInformation.setAdapter(adapter);
 
+        info.setEmailPhone(email, phone);
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                emailtext = email.getText().toString();
-                phonetext = phone.getText().toString();
-                banktext =  bankInformation.getSelectedItem().toString();
-                loantext = loan.getText().toString();
-                locationtext = location.getText().toString();
-                savingstext = savings.getText().toString();
 
-                System.out.println(emailtext);
-                System.out.println(phonetext);
-                System.out.println(banktext);
-                System.out.println(loantext);
-                System.out.println(locationtext);
-                System.out.println(savingstext);
+            info.setInfo(email, phone, bankInformation, loan, location, savings);
+            Intent estimated_monthly_expense = new Intent(getApplicationContext(), estimated_monthly_expense.class);
+            startActivity(estimated_monthly_expense);
 
             }
         });

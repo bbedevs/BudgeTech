@@ -34,9 +34,13 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mm.budgetech.R;
+import com.mm.budgetech.model.User;
 import com.mm.budgetech.views.auth.sign_up;
 import com.mm.budgetech.views.budgeting.estimated_monthly_expense;
+import com.mm.budgetech.views.user_info.user_information;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,14 +50,16 @@ import java.util.concurrent.Executor;
 
 import static androidx.core.app.ActivityCompat.startActivityForResult;
 import static com.facebook.FacebookSdk.getApplicationContext;
+import static com.mm.budgetech.static_constants.EMAIL;
+import static com.mm.budgetech.static_constants.appUser;
+import static com.mm.budgetech.static_constants.appUserUID;
+import static com.mm.budgetech.static_constants.reference;
 
 public class authentication {
 
     //   String Email;
     // String Password;
 
-    public static final String EMAIL = "email";
-    public static final int RC_SIGN_IN = 1;
     sign_up new_sign_up_instance = new sign_up();
 
 
@@ -86,13 +92,13 @@ public class authentication {
 
     //SignUpusingEmailandPassword
 
-    public void SignUpUsingEmailandPassword(final String email, final String password, final Context SignUpContext) {
+    public void SignUpUsingEmailandPassword(final String email, final String password,final String Username,  final Context SignUpContext) {
         System.out.println(email);
         System.out.println(password);
         final FirebaseAuth firebaseAuth;
         firebaseAuth = FirebaseAuth.getInstance();
 
-        if (password.length() >= 6) {
+        if (password.length() >= 6 && !email.isEmpty() && !Username.isEmpty()) {
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -101,6 +107,10 @@ public class authentication {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d("Successful", "createUserWithEmail:success");
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
+                                appUser = new User(user.getUid());
+                                appUserUID = appUser.uid;
+                                reference.child(appUserUID).child("Email").setValue(email);
+                                reference.child(appUserUID).child("Username").setValue(Username);
                                 SignInUsingEmailandPassword(email, password, SignUpContext);
                                 //updateUI(user);
                             } else {
@@ -115,7 +125,7 @@ public class authentication {
                         }
                     });
         } else {
-            Toast.makeText(SignUpContext, "Password length should be greater than six", Toast.LENGTH_LONG).show();
+            Toast.makeText(SignUpContext, "Please enter valid data", Toast.LENGTH_LONG).show();
         }
 
 
@@ -135,6 +145,9 @@ public class authentication {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("success", "signInWithEmail:success");
                             FirebaseUser user = firebaseAuth.getCurrentUser();
+                            appUser = new User(user.getUid());
+                            Intent user_info = new Intent(authentication_context, user_information.class);
+                            authentication_context.startActivity(user_info);
                             Toast.makeText(authentication_context, "Signed In", Toast.LENGTH_SHORT).show();
 
                             //  updateUI(user);
@@ -201,8 +214,16 @@ public class authentication {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("Success_FBintoFB", "signInWithCredential:success");
                             FirebaseUser user = firebaseAuth.getCurrentUser();
-                            Intent new_expense_activity = new Intent(FBContext, estimated_monthly_expense.class);
-                            FBContext.startActivity(new_expense_activity);
+                            appUser = new User(user.getUid());
+                            appUserUID = appUser.uid;
+                            appUser.email = user.getEmail();
+                            appUser.username = user.getDisplayName();
+                            appUser.phonenum = user.getPhoneNumber();
+                            reference.child(appUserUID).child("Email").setValue(appUser.email);
+                            reference.child(appUserUID).child("Username").setValue(appUser.username);
+                            reference.child(appUserUID).child("PhoneNumber").setValue(appUser.phonenum);
+                            Intent user_info = new Intent(FBContext, user_information.class);
+                            FBContext.startActivity(user_info);
                            // updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -279,8 +300,16 @@ public class authentication {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d("FirebaseAuth Successful", "signInWithCredential:success");
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                                Intent new_expense_activity = new Intent(GoogleContext, estimated_monthly_expense.class);
-                                GoogleContext.startActivity(new_expense_activity);
+                                appUser = new User(user.getUid());
+                                appUserUID = appUser.uid;
+                                appUser.email = user.getEmail();
+                                appUser.username = user.getDisplayName();
+                                appUser.phonenum = user.getPhoneNumber();
+                                reference.child(appUserUID).child("Email").setValue(appUser.email);
+                                reference.child(appUserUID).child("Username").setValue(appUser.username);
+                                reference.child(appUserUID).child("PhoneNumber").setValue(appUser.phonenum);
+                                Intent user_info = new Intent(GoogleContext, user_information.class);
+                                GoogleContext.startActivity(user_info);
                              //   updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.

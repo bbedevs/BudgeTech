@@ -24,17 +24,20 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mm.budgetech.R;
+import com.mm.budgetech.model.User;
 import com.mm.budgetech.services.auth.authentication;
 
 import java.util.Objects;
 
 import static androidx.core.app.ActivityCompat.startActivityForResult;
-import static com.mm.budgetech.services.auth.authentication.RC_SIGN_IN;
+import static com.mm.budgetech.static_constants.RC_SIGN_IN;
+
 
 public class sign_up extends AppCompatActivity {
 
     String email;
     String password;
+    String username;
     FirebaseAuth firebaseAuth;
     authentication auth;
 
@@ -42,6 +45,7 @@ public class sign_up extends AppCompatActivity {
     FloatingActionButton sign_up_google;
     EditText Email;
     EditText Password;
+    EditText Username;
     FloatingActionButton sign_up_facebook;
     TextView alreadyHaveAnAccount;
     FloatingActionButton sign_up_Email;
@@ -74,6 +78,7 @@ public class sign_up extends AppCompatActivity {
         sign_up_google = (FloatingActionButton) findViewById(R.id.google_button);
         Email = findViewById(R.id.email_sign_up);
         Password =  findViewById(R.id.email_sign_up);
+        Username = findViewById(R.id.username);
         auth = new authentication();
 
 //        sign_up_facebook.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +101,8 @@ public class sign_up extends AppCompatActivity {
             public void onClick(View v) {
                 email = Email.getText().toString();
                 password = Password.getText().toString();
-                auth.SignUpUsingEmailandPassword(email, password, getApplicationContext());
+                username = Username.getText().toString();
+                auth.SignUpUsingEmailandPassword(email, password, username, getApplicationContext());
 
             }
         });
