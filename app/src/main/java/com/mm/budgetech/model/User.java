@@ -8,6 +8,7 @@ public class User {
     {
         uid = id;
     }
+    public User() {}
 
    public void userInformation(String email, String phonenum, String bankname, String location, String loan,  String savinngs )
     {

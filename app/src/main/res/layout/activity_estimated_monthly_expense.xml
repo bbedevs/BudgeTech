@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="430dp"
+        android:layout_marginBottom="470dp"
         android:text="Choose these following Categories to divide your expenses"
         android:textColor="@color/appIcons"
         android:textSize="16sp"
@@ -36,9 +36,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="500dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:layout_marginRight="40dp"
         android:layout_marginBottom="90dp"
         android:background="@color/white"
@@ -52,14 +52,17 @@
             android:id="@+id/tv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Skip >  "
+            android:text="Done "
             android:textColor="@color/appPrimaryColor"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"/>
+            android:layout_marginEnd="5dp"
+            android:clickable="true"
+            android:onClick="estimateDone"
+            />
 
         <TextView
             android:id="@+id/tv2"
@@ -73,7 +76,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="325dp"/>
+            android:layout_marginBottom="400dp"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/foodCL"
@@ -81,7 +84,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="100dp">
+            android:layout_marginTop="80dp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/food"
@@ -118,7 +121,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@+id/foodCL"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="80dp"
             android:layout_marginStart="20dp"
 
             >
@@ -160,7 +163,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/housingCL"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="80dp"
             android:layout_marginStart="20dp">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -432,7 +435,35 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout4"
+            android:layout_width="250dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="48dp"
+            style="@style/TextInputLayoutStyle"
+            app:hintTextAppearance="@style/AuthLabels"
+            app:layout_constraintTop_toBottomOf="@id/savingsCL"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="30dp">
 
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/amount"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_text_layout"
+                android:drawableStart="@drawable/baseline_money_24"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/appIcons"
+                android:hint="Amount (RS)"
+                android:inputType="number"
+                android:padding="5dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -448,7 +479,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="550dp"
-        app:srcCompat="@drawable/baseline_arrow_forward_24" />
+        android:layout_marginTop="570dp"
+        app:srcCompat="@drawable/baseline_done_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
