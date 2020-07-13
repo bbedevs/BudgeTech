@@ -14,6 +14,7 @@ import android.view.View;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mm.budgetech.R;
 import com.mm.budgetech.services.budgeting.monthlyBudget;
+import com.mm.budgetech.views.navigation.bottom_navigation;
 
 import static com.mm.budgetech.static_constants.appUserUID;
 import static com.mm.budgetech.static_constants.reference;
@@ -253,7 +254,7 @@ public class estimated_monthly_expense extends AppCompatActivity {
 
     public void estimateDone(View v)
     {
-        Intent i = new Intent(getApplicationContext(), manageBudget.class);
+        Intent i = new Intent(getApplicationContext(), bottom_navigation.class);
         startActivity(i);
     }
 }

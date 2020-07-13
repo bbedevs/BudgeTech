@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimary">#154758</color>
     <color name="colorPrimaryDark">#154758</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="appPrimaryColor">#154758</color>"
@@ -10,6 +10,7 @@
     <color name="white">#FFFFFF</color>
     <color name="appSecondaryColor"> #29abab</color>
     <color name="appFonts">#696969</color>
+    <color name="appgrey">#EFEFEF</color>
     <color name="black">#000000</color>
     <color name="seagreen">#169198</color>
     <color name="recycleviewcolor">#F5F5F5</color>

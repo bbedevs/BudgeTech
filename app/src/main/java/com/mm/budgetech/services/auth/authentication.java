@@ -3,6 +3,7 @@ package com.mm.budgetech.services.auth;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,23 +35,14 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.mm.budgetech.R;
 import com.mm.budgetech.model.User;
 import com.mm.budgetech.views.auth.sign_up;
-import com.mm.budgetech.views.budgeting.estimated_monthly_expense;
 import com.mm.budgetech.views.user_info.user_information;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Arrays;
-import java.util.concurrent.Executor;
-
-import static androidx.core.app.ActivityCompat.startActivityForResult;
-import static com.facebook.FacebookSdk.getApplicationContext;
 import static com.mm.budgetech.static_constants.EMAIL;
+import static com.mm.budgetech.static_constants.Prefs;
 import static com.mm.budgetech.static_constants.appUser;
 import static com.mm.budgetech.static_constants.appUserUID;
 import static com.mm.budgetech.static_constants.reference;
@@ -61,6 +53,7 @@ public class authentication {
     // String Password;
 
     sign_up new_sign_up_instance = new sign_up();
+
 
 
     //SignInAnonymously
@@ -112,6 +105,7 @@ public class authentication {
                                 reference.child(appUserUID).child("Email").setValue(email);
                                 reference.child(appUserUID).child("Username").setValue(Username);
                                 SignInUsingEmailandPassword(email, password, SignUpContext);
+
                                 //updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.
@@ -285,13 +279,14 @@ public class authentication {
         final FirebaseAuth firebaseAuth;
         firebaseAuth = FirebaseAuth.getInstance();
         try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+           GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             System.out.println("Signed In");
 
 
             // Signed in successfully, show authenticated UI.
 
             AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+
             firebaseAuth.signInWithCredential(credential)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -305,6 +300,7 @@ public class authentication {
                                 appUser.email = user.getEmail();
                                 appUser.username = user.getDisplayName();
                                 appUser.phonenum = user.getPhoneNumber();
+                                sharedPref(GoogleContext, appUserUID, appUser.username, appUser.email, appUser.phonenum);
                                 reference.child(appUserUID).child("Email").setValue(appUser.email);
                                 reference.child(appUserUID).child("Username").setValue(appUser.username);
                                 reference.child(appUserUID).child("PhoneNumber").setValue(appUser.phonenum);
@@ -346,6 +342,17 @@ public String getGoogleUserData(Context GoogleContext)
 
 }
 
+public void sharedPref(Context context, String ID, String Username, String email, String phone)
+{
+    SharedPreferences sharedPreferences = context.getSharedPreferences(Prefs, Context.MODE_PRIVATE);
+    SharedPreferences.Editor editor = sharedPreferences.edit();
+    editor.putString("id",ID);
+    editor.putString("username", Username);
+    editor.putString("email", email);
+    editor.putString("phone", phone);
+    editor.commit();
+
+}
 }
 
 

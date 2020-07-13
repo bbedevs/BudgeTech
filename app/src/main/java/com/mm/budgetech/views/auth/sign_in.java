@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -21,8 +22,13 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 import com.mm.budgetech.R;
 import com.mm.budgetech.services.auth.authentication;
 import com.mm.budgetech.views.budgeting.estimated_monthly_expense;
+import com.mm.budgetech.views.navigation.bottom_navigation;
 
 import java.util.Objects;
+
+import static com.mm.budgetech.static_constants.Prefs;
+import static com.mm.budgetech.static_constants.appUser;
+import static com.mm.budgetech.static_constants.appUserUID;
 
 public class sign_in extends AppCompatActivity {
     String email;
@@ -34,7 +40,7 @@ public class sign_in extends AppCompatActivity {
     EditText Password;
     Button sign_in;
     Button sign_up;
-
+    SharedPreferences sharedPreferences;
 
 
     public void onStart(){
@@ -43,12 +49,21 @@ public class sign_in extends AppCompatActivity {
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
-       // System.out.println(Objects.requireNonNull(account).toString());
-//        if (account != null ||  accessToken!= null)
-//        {
-//            Intent new_expense_activity = new Intent(getApplicationContext(), estimated_monthly_expense.class);
-//            startActivity(new_expense_activity);
-//        }
+        sharedPreferences = getSharedPreferences(Prefs, MODE_PRIVATE);
+//        System.out.println(Objects.requireNonNull(account).toString());
+        if (account != null ||  accessToken!= null)
+        {
+            appUserUID = sharedPreferences.getString("id", "");
+            appUser.username = sharedPreferences.getString("username", "");
+            appUser.email = sharedPreferences.getString("email", "");
+            appUser.phonenum = sharedPreferences.getString("phone", "");
+            System.out.println(appUserUID);
+            System.out.println(appUser.username);
+            System.out.println(appUser.phonenum);
+            System.out.println(appUser.email);
+            Intent new_expense_activity = new Intent(getApplicationContext(), bottom_navigation.class);
+            startActivity(new_expense_activity);
+        }
     }
 
     @Override

@@ -85,6 +85,16 @@
 
        />
 
+        <ProgressBar
+            android:id="@+id/monthlyprogress"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:indeterminateTint="@color/appPrimaryColor"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/show_data"
             android:layout_width="match_parent"

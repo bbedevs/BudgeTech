@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.budgeting.add_budget">
+    tools:context=".views.recordkeeping.add_record">
 
     <View
         android:id="@+id/view3"
@@ -78,14 +78,16 @@
             android:layout_gravity="center"
             android:padding="25dp">
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_marginVertical="5dp"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="1dp"
                 android:contentDescription="string/content_description_media"
                 android:scaleType="fitStart"
-                app:srcCompat="@drawable/messenger_bubble_large_blue" />
+                app:srcCompat="@drawable/addrec"
+                android:backgroundTint="@color/white"
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -141,9 +143,6 @@
                 />
         </LinearLayout>
 
-
-
-
             <Button
                 android:id="@+id/scan_img"
                 android:layout_width="300dp"
@@ -160,11 +159,13 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating2"
         style="@style/Widget.MaterialComponents.FloatingActionButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:backgroundTint="@color/appPrimaryColor"
         android:tint="@color/white"

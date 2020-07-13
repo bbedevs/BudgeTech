@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="65dp"
     android:background="@drawable/recyclerviewedit"
-    android:layout_marginTop="2.5dp"
-    android:layout_marginBottom="2.5dp"
-    android:layout_marginStart="2.5dp"
-    android:layout_marginEnd="2.5dp">
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp">
 
 
     <TextView

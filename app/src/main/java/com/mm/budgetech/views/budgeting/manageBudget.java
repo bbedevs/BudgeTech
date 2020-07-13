@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +31,8 @@ import static com.mm.budgetech.static_constants.item_name;
 public class manageBudget extends AppCompatActivity {
 
 
-
+    Button addnew;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,7 @@ public class manageBudget extends AppCompatActivity {
         Objects.requireNonNull(actionBar).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.appPrimaryColor)));
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setCustomView(R.layout.actionbar_layout);
+        addnew = (Button)findViewById(R.id.add_new);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -63,15 +68,24 @@ public class manageBudget extends AppCompatActivity {
             }
         });
 
+        addnew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), estimated_monthly_expense.class);
+                startActivity(i);
+            }
+        });
 
     }
 
     private void initRecyclerView()
     {
+        progressBar = findViewById(R.id.monthlyprogress);
         RecyclerView recyclerView = findViewById(R.id.show_data);
         recyclerViewAdapter = new RecyclerViewAdapter(item_name, item_amount,this);
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        progressBar.setVisibility(View.GONE);
 
     }
 }
