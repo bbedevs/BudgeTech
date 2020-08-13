@@ -16,5 +16,8 @@
     <color name="recycleviewcolor">#F5F5F5</color>
     <color name="greenish">#117C2E</color>
     <color name="gree5nish">#68FF91</color>
+    <color name="orange">#FF7322</color>
+    <color name="green">#117C2E</color>
+    <color name="red">#CB1010</color>
 
 </resources>

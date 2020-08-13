@@ -20,6 +20,7 @@ import com.mm.budgetech.views.loans.loans;
 import com.mm.budgetech.views.recordkeeping.add_record;
 import com.mm.budgetech.views.recordkeeping.record_keeping_frags;
 import com.mm.budgetech.views.savings.savings_main;
+import com.mm.budgetech.views.wallet;
 
 
 public class Menu_Fragment extends Fragment {
@@ -73,6 +74,13 @@ public class Menu_Fragment extends Fragment {
         }
     });
 
+    wallet.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent i = new Intent(getActivity().getApplicationContext(), com.mm.budgetech.views.wallet.class );
+            startActivity(i);
+        }
+    });
         return root;
 
 
