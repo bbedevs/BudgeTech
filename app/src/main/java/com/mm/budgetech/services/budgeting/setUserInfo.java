@@ -36,7 +36,7 @@ public class setUserInfo {
         reference.child(appUserUID).child("Bank").setValue(appUser.bankname);
         reference.child(appUserUID).child("Loan").setValue(appUser.loan);
         reference.child(appUserUID).child("Address").setValue(appUser.location);
-        reference.child(appUserUID).child("Savings").setValue(appUser.savings);
+        reference.child(appUserUID).child("Savings_Total").setValue(appUser.savings);
 
 
 

@@ -29,6 +29,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+      <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="21sp"
+            android:text="Add Record"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="460dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Choose Category"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="400dp"
+            android:layout_marginEnd="185dp"
+            android:layout_marginTop="7dp"/>
+
         <androidx.core.widget.NestedScrollView
             android:id="@+id/SV"
             android:layout_width="match_parent"
@@ -37,7 +63,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="270dp">
+            android:layout_marginBottom="190dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -53,7 +79,7 @@
                 >
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/food"
+                    android:id="@+id/food_rec"
                     style="@style/Widget.MaterialComponents.FloatingActionButton"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
@@ -92,7 +118,7 @@
                 >
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/housing"
+                    android:id="@+id/housing_rec"
                     style="@style/Widget.MaterialComponents.FloatingActionButton"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
@@ -130,7 +156,7 @@
                 app:layout_constraintStart_toEndOf="@id/housingCL"
                 android:layout_marginStart="20dp">
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/transport"
+                    android:id="@+id/transport_rec"
                     style="@style/Widget.MaterialComponents.FloatingActionButton"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
@@ -169,7 +195,7 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/billutil"
+                    android:id="@+id/billutil_rec"
                     style="@style/Widget.MaterialComponents.FloatingActionButton"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
@@ -214,7 +240,7 @@
 
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/insurance"
+                    android:id="@+id/insurance_rec"
                     style="@style/Widget.MaterialComponents.FloatingActionButton"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
@@ -252,7 +278,7 @@
                 android:layout_marginStart="20dp">
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/health"
+                    android:id="@+id/health_rec"
                     style="@style/Widget.MaterialComponents.FloatingActionButton"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
@@ -288,7 +314,7 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/entertainment"
+                    android:id="@+id/entertainment_rec"
                     style="@style/Widget.MaterialComponents.FloatingActionButton"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
@@ -328,7 +354,7 @@
                 android:layout_marginStart="20dp">
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/savings"
+                    android:id="@+id/savings_rec"
                     style="@style/Widget.MaterialComponents.FloatingActionButton"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
@@ -369,7 +395,7 @@
                 android:layout_marginStart="20dp">
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/investing"
+                    android:id="@+id/investing_rec"
                     style="@style/Widget.MaterialComponents.FloatingActionButton"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
@@ -420,7 +446,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp">
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/add_rec_amount"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -428,7 +454,6 @@
                 android:drawablePadding="7dp"
                 android:drawableTint="@color/appIcons"
                 android:hint="Set Amount"
-                android:drawableEnd="@drawable/ic_pakistan_rupee_currency_symbol"
                 android:inputType="number"
                 android:padding="5dp"
                 />
@@ -451,7 +476,7 @@
             app:layout_constraintTop_toBottomOf="@id/textInputLayout6"
             >
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/add_rec_description"
                 android:layout_width="match_parent"
                 android:layout_height="170dp"
@@ -461,12 +486,58 @@
                 android:drawablePadding="7dp"
                 android:drawableTint="@color/appIcons"
                 android:hint="Add Description"
-                android:inputType="number"
+                android:inputType="text"
                 android:padding="5dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="PKR"
+            android:textSize="16sp"
+            android:textColor="@color/appIcons"
+            app:layout_constraintTop_toTopOf="@id/textInputLayout6"
+            app:layout_constraintBottom_toBottomOf="@id/textInputLayout6"
+            app:layout_constraintStart_toStartOf="@id/textInputLayout6"
+            app:layout_constraintEnd_toEndOf="@id/textInputLayout6"
+            android:layout_marginStart="250dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/next_rec"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:backgroundTint="@color/appPrimaryColor"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="580dp"
+        app:srcCompat="@drawable/baseline_done_24" />
+
+
+
+    <ImageButton
+        android:id="@+id/back_add_rec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/baseline_arrow_back_24"
+        android:background="@color/appPrimaryColor"
+        android:tint="@color/white"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp">
+
+    </ImageButton>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

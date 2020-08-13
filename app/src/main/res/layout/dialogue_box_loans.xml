@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="500dp"
+    android:background="@color/appBackground"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/txt_dia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Would You Like To Set A Reminder? "
+        android:textColor="@color/appPrimaryColor"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.135" />
+
+    <DatePicker
+       android:id="@+id/date_loan"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:datePickerMode="spinner"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       android:calendarViewShown="false"
+     >
+
+
+   </DatePicker>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/done_loan_reminder"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:backgroundTint="@color/appPrimaryColor"
+        android:tint="@color/white"
+        app:srcCompat="@drawable/baseline_done_24"
+        app:layout_constraintTop_toBottomOf="@id/date_loan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+      />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

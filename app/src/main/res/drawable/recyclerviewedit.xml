@@ -3,10 +3,6 @@
     <solid android:color="@color/recycleviewcolor"
         />
 
-    <stroke android:width="0.5dp"
-        android:color="@color/appPrimaryColor"
-        />
-
     <padding android:left="1dp"
         android:top="1dp"
         android:right="1dp"

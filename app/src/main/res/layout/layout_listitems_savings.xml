@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/savings_layout"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    android:background="@drawable/recyclerviewedit"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    android:clickable="true"
+    android:elevation="5dp"
+    android:focusable="true">
+
+
+    <TextView
+        android:id="@+id/name_saving"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:gravity="left"
+        android:text="Title"
+        android:textColor="@color/appIcons"
+        android:textSize="14sp"
+        android:textStyle="bold">
+
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/time_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="88dp"
+        android:layout_marginBottom="67dp"
+        android:layout_weight="1"
+        android:text="Time Left"
+        android:textAlignment="textStart"
+        android:textColor="@color/appIcons"
+        android:textSize="12sp">
+
+    </TextView>
+
+    <ImageView
+        android:id="@+id/changeAmount"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/setamountlayoutsave"
+        android:textColor="@color/white" />
+
+    <ProgressBar
+        android:id="@+id/progress_save"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="18dp" />
+
+
+    <TextView
+        android:id="@+id/amount_saved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:text="Amount Saved"
+        android:textSize="12sp"/>
+
+
+    <TextView
+        android:id="@+id/amount_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="Amount Total"
+        android:textSize="12sp"/>
+
+</RelativeLayout>

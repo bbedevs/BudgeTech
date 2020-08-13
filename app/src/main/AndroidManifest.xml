@@ -11,7 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.recordkeeping.add_new_record"></activity>
+        <activity android:name=".views.recordkeeping.record_keeping_frags"></activity>
+
+        <service
+            android:name=".services.services"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver android:name=".services.BroadCastReceiver" />
+
+        <activity android:name=".views.loans.add_new_loan" />
+        <activity android:name=".views.loans.loans" />
+        <activity android:name=".views.savings.savings_main" />
+        <activity android:name=".views.savings.add_saving_goal" />
+        <activity android:name=".views.recordkeeping.add_new_record" />
         <activity android:name=".views.recordkeeping.add_record" />
         <activity android:name=".views.navigation.bottom_navigation" />
         <activity android:name=".views.budgeting.manageBudget" />

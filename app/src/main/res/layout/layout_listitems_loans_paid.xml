@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:id="@+id/constraintLayout_paid"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/recyclerviewedit"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp">
+
+    <ImageView
+        android:id="@+id/Image_Loans_Paid"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/setamountlayoutsave"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/loan_paid_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/Image_Loans_Paid"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="45dp"
+        android:textSize="14sp"
+        android:text="To be Paid to Hashim"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/loan_paid_Amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/loan_paid_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/Image_Loans_Paid"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="25dp"
+        android:textSize="12sp"
+        android:text="12000 PKR"/>
+
+    <TextView
+        android:id="@+id/reminder_paid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reminder set at 12:00pm, 22nd May"
+        app:layout_constraintTop_toBottomOf="@id/loan_paid_Amount"
+        app:layout_constraintStart_toStartOf="@id/loan_paid_name"
+        android:layout_marginTop="9dp"
+        android:textSize="11sp"
+        android:gravity="center"
+        android:drawableStart="@drawable/baseline_alarm_24"
+        android:textStyle="italic"
+        android:drawablePadding="2dp"
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

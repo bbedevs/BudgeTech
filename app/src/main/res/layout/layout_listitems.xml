@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="65dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/recyclerviewedit"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
@@ -12,18 +13,15 @@
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:gravity="left"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textStyle="bold"
         android:text="abc"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold">
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="20dp">
 
 
     </TextView>
@@ -33,29 +31,27 @@
         android:id="@+id/quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="-27dp"
-        android:layout_marginBottom="8dp"
-        android:layout_toRightOf="@id/name"
-        android:layout_weight="1"
-        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name"
         android:text="qu"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="5dp"
         android:textColor="@color/appIcons"
-        android:textSize="15sp">
+        android:textSize="12sp">
 
     </TextView>
 
     <Button
         android:id="@+id/changeAmount"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="10dp"
         android:text="Change Amount"
+        android:textSize="9sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:textColor="@color/white"
         android:background="@drawable/setamountlayout" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.recordkeeping.add_new_record">
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/appPrimaryColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="50dp"
+        android:background="@color/white"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/back_add_sav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done "
+            android:textColor="@color/appPrimaryColor"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:clickable="true"
+
+            />
+
+        <TextView
+            android:id="@+id/add_savtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="21sp"
+            android:text="Add Saving Goal"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="25dp"
+           />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Choose Category"
+            app:layout_constraintTop_toBottomOf="@id/add_savtext"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/SV"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="150dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/foodCL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    >
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/food_sav"
+                        style="@style/Widget.MaterialComponents.FloatingActionButton"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="left|top"
+                        android:backgroundTint="@color/appSecondaryColor"
+                        android:tint="@color/white"
+                        app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:useCompatPadding="true" />
+
+                    <TextView
+                        android:id="@+id/ctg1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Emergency"
+                        android:textColor="@color/appIcons"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="10dp"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/housingCL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/foodCL"
+                    app:layout_constraintEnd_toStartOf="@id/transportCL"
+
+
+
+                    >
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/housing_sav"
+                        style="@style/Widget.MaterialComponents.FloatingActionButton"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="left|top"
+                        android:backgroundTint="@color/appSecondaryColor"
+                        android:tint="@color/white"
+                        app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                        app:useCompatPadding="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/ctg2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Housing"
+                        android:textColor="@color/appIcons"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="18dp"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/transportCL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="20dp">
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/transport_sav"
+                        style="@style/Widget.MaterialComponents.FloatingActionButton"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="left|top"
+                        android:backgroundTint="@color/appSecondaryColor"
+                        android:tint="@color/white"
+                        app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                        app:useCompatPadding="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/ctg3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Transport"
+                        android:textColor="@color/appIcons"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="13dp"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/billutilCL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/foodCL"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/billutil_sav"
+                        style="@style/Widget.MaterialComponents.FloatingActionButton"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="left|top"
+                        android:backgroundTint="@color/appSecondaryColor"
+                        android:tint="@color/white"
+                        app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:useCompatPadding="true" />
+
+                    <TextView
+                        android:id="@+id/ctg4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bill/Utilities"
+                        android:textColor="@color/appIcons"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="7dp"
+
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/insuranceCL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/housingCL"
+                    app:layout_constraintStart_toEndOf="@+id/billutilCL"
+                    app:layout_constraintEnd_toStartOf="@id/healthCL"
+
+                    >
+
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/insurance_sav"
+                        style="@style/Widget.MaterialComponents.FloatingActionButton"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="left|top"
+                        android:backgroundTint="@color/appSecondaryColor"
+                        android:tint="@color/white"
+                        app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                        app:useCompatPadding="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/ctg5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Insurance"
+                        android:textColor="@color/appIcons"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="10dp"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/healthCL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/transportCL"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="20dp">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/health_sav"
+                        style="@style/Widget.MaterialComponents.FloatingActionButton"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="left|top"
+                        android:backgroundTint="@color/appSecondaryColor"
+                        android:tint="@color/white"
+                        app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                        app:useCompatPadding="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/ctg6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Health"
+                        android:textColor="@color/appIcons"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="23dp"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/entertainmentCL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/billutilCL"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/entertainment_sav"
+                        style="@style/Widget.MaterialComponents.FloatingActionButton"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="left|top"
+                        android:backgroundTint="@color/appSecondaryColor"
+                        android:tint="@color/white"
+                        app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                        app:useCompatPadding="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/ctg7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fun"
+                        android:textColor="@color/appIcons"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="33dp"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/savingsCL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@+id/entertainmentCL"
+                    app:layout_constraintTop_toBottomOf="@+id/insuranceCL"
+                    app:layout_constraintEnd_toStartOf="@id/investingCL"
+                   >
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/savings_sav"
+                        style="@style/Widget.MaterialComponents.FloatingActionButton"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="left|top"
+                        android:backgroundTint="@color/appSecondaryColor"
+                        android:tint="@color/white"
+                        app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                        app:useCompatPadding="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/ctg8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Custom"
+                        android:textColor="@color/appIcons"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="20dp"
+
+
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/investingCL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/healthCL"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="20dp">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/investing_sav"
+                        style="@style/Widget.MaterialComponents.FloatingActionButton"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="left|top"
+                        android:backgroundTint="@color/appSecondaryColor"
+                        android:tint="@color/white"
+                        app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                        app:useCompatPadding="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/ctg9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Investing"
+                        android:textColor="@color/appIcons"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="17dp"
+                        />
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout6"
+            android:layout_width="300dp"
+            android:layout_height="75dp"
+            style="@style/TextInputLayoutStyle"
+            app:hintTextAppearance="@style/AuthLabels"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/SV"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/add_sav_amount"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_text_layout"
+                android:drawablePadding="7dp"
+                android:drawableTint="@color/appIcons"
+                android:hint="Set Amount"
+                android:inputType="number"
+                android:padding="5dp"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout7"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="300dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:hintTextAppearance="@style/AuthLabels"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayout6"
+            >
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/add_sav_description"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_text_layout"
+                android:drawableStart="@drawable/baseline_hourglass_full_24"
+                android:drawablePadding="7dp"
+                android:drawableTint="@color/appIcons"
+                android:gravity="start"
+                android:hint="Add Time Duration"
+                android:inputType="text"
+                 />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="PKR"
+            android:textSize="16sp"
+            android:textColor="@color/appIcons"
+            app:layout_constraintTop_toTopOf="@id/textInputLayout6"
+            app:layout_constraintBottom_toBottomOf="@id/textInputLayout6"
+            app:layout_constraintStart_toStartOf="@id/textInputLayout6"
+            app:layout_constraintEnd_toEndOf="@id/textInputLayout6"
+            android:layout_marginStart="250dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"/>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/next_sav"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:backgroundTint="@color/appPrimaryColor"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayout7"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="25dp"
+            app:srcCompat="@drawable/baseline_done_24" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,34 +9,19 @@
     <View
         android:id="@+id/view3"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="50dp"
         android:background="@color/appPrimaryColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
     </View>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:text="Choose these following Categories to divide your expenses"
-        android:textColor="@color/appIcons"
-        android:textSize="16sp"
-        android:textAlignment="center"
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        app:layout_constraintBottom_toTopOf="@id/maincard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </TextView>
+
     <androidx.cardview.widget.CardView
 
         android:outlineSpotShadowColor="@color/appPrimaryColor"
         android:id="@+id/maincard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="50dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
@@ -76,7 +61,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center"
-            android:padding="25dp">
+            android:padding="25dp"
+            android:layout_marginTop="15dp">
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
@@ -107,7 +93,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="36dp"
                 android:background="@drawable/auth_button_layout"
-                android:text="ADD YOUR FIRST RECORD"
+                android:text="ADD YOUR RECORD"
                 android:textColor="@color/white"/>
         <LinearLayout
             android:layout_width="match_parent"

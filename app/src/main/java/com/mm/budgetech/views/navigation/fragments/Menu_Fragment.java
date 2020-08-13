@@ -15,7 +15,11 @@ import androidx.fragment.app.Fragment;
 import com.mm.budgetech.R;
 import com.mm.budgetech.views.budgeting.estimated_monthly_expense;
 import com.mm.budgetech.views.budgeting.manageBudget;
+import com.mm.budgetech.views.loans.loans;
+
 import com.mm.budgetech.views.recordkeeping.add_record;
+import com.mm.budgetech.views.recordkeeping.record_keeping_frags;
+import com.mm.budgetech.views.savings.savings_main;
 
 
 public class Menu_Fragment extends Fragment {
@@ -24,7 +28,6 @@ public class Menu_Fragment extends Fragment {
     ImageButton monthly_budget;
     ImageButton savings;
     ImageButton loans;
-    ImageButton insights;
     ImageButton wallet;
 
 
@@ -35,6 +38,8 @@ public class Menu_Fragment extends Fragment {
         View root = inflater.inflate(R.layout.menu_fragment, container, false);
         monthly_budget = root.findViewById(R.id.monthly_budget_button);
         record_diary = root.findViewById(R.id.record_diary_button);
+        savings = root.findViewById(R.id.savings_button);
+        loans = root.findViewById(R.id.loans_button);
 
         monthly_budget.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,10 +52,26 @@ public class Menu_Fragment extends Fragment {
         record_diary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity().getApplicationContext(), add_record.class );
+                Intent i = new Intent(getActivity().getApplicationContext(), record_keeping_frags.class );
                 startActivity(i);
             }
         });
+
+        savings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity().getApplicationContext(), savings_main.class );
+                startActivity(i);
+            }
+        });
+
+    loans.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent i = new Intent(getActivity().getApplicationContext(), com.mm.budgetech.views.loans.loans.class );
+            startActivity(i);
+        }
+    });
 
         return root;
 

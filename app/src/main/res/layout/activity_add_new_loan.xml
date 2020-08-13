@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="470dp"
-        android:text="Choose these following Categories to divide your expenses"
+        android:text="Fill the entries to save a loan record"
         android:textColor="@color/appIcons"
         android:textSize="16sp"
         android:textAlignment="center"
@@ -68,9 +68,10 @@
             android:id="@+id/tv2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Estimate your Monthly Budget"
+            android:text="Add New Loan"
+            android:textAllCaps="true"
             android:textColor="@color/appIcons"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -86,34 +87,34 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="80dp">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/food"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="left|top"
-            android:backgroundTint="@color/appSecondaryColor"
-            android:tint="@color/white"
-            app:fabCustomSize="@android:dimen/notification_large_icon_width"
-            app:useCompatPadding="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-     />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/emergency_loan"
+                style="@style/Widget.MaterialComponents.FloatingActionButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="left|top"
+                android:backgroundTint="@color/appSecondaryColor"
+                android:tint="@color/white"
+                app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                app:useCompatPadding="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
 
-        <TextView
-            android:id="@+id/ctg1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Food"
-            android:textColor="@color/appIcons"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="28dp"
-    />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/ctg1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Emergency"
+                android:textColor="@color/appIcons"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/housingCL"
@@ -127,7 +128,7 @@
             >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/housing"
+                android:id="@+id/housing_loan"
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
@@ -167,7 +168,7 @@
             android:layout_marginStart="20dp">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/transport"
+                android:id="@+id/transport_loan"
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
@@ -193,7 +194,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="13dp"
-           />
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -206,7 +207,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/billutil"
+                android:id="@+id/billutil_loan"
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
@@ -250,7 +251,7 @@
 
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/insurance"
+                android:id="@+id/insurance_loan"
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
@@ -288,7 +289,7 @@
             android:layout_marginStart="20dp">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/health"
+                android:id="@+id/health_loan"
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
@@ -301,7 +302,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-               />
+                />
 
             <TextView
                 android:id="@+id/ctg6"
@@ -313,126 +314,43 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="23dp"
-              />
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/entertainmentCL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/billutilCL"
-        app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/entertainment"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="left|top"
-            android:backgroundTint="@color/appSecondaryColor"
-            android:tint="@color/white"
-            app:fabCustomSize="@android:dimen/notification_large_icon_width"
-            app:useCompatPadding="true"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout8"
+            android:layout_width="250dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="48dp"
+            style="@style/TextInputLayoutStyle"
+            app:hintTextAppearance="@style/AuthLabels"
+            app:layout_constraintTop_toBottomOf="@id/insuranceCL"
             app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
-
-        <TextView
-            android:id="@+id/ctg7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fun"
-            android:textColor="@color/appIcons"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="33dp"
-/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginEnd="30dp">
 
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/savingsCL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/entertainmentCL"
-        app:layout_constraintTop_toBottomOf="@+id/insuranceCL"
-        android:layout_marginStart="20dp">
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/name_loan"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_text_layout"
+                android:drawableStart="@drawable/baseline_money_24"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/appIcons"
+                android:hint="Name"
+                android:inputType="text"
+                android:padding="5dp" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/savings"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="left|top"
-            android:backgroundTint="@color/appSecondaryColor"
-            android:tint="@color/white"
-            app:fabCustomSize="@android:dimen/notification_large_icon_width"
-            app:useCompatPadding="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
-
-        <TextView
-            android:id="@+id/ctg8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Savings"
-            android:textColor="@color/appIcons"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="20dp"
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-             />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/investingCL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/savingsCL"
-            app:layout_constraintTop_toBottomOf="@+id/healthCL"
-            android:layout_marginStart="20dp">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/investing"
-                style="@style/Widget.MaterialComponents.FloatingActionButton"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_gravity="left|top"
-                android:backgroundTint="@color/appSecondaryColor"
-                android:tint="@color/white"
-                app:fabCustomSize="@android:dimen/notification_large_icon_width"
-                app:useCompatPadding="true"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-        />
-
-            <TextView
-                android:id="@+id/ctg9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Investing"
-                android:textColor="@color/appIcons"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="17dp"
- />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -442,9 +360,9 @@
             android:layout_marginBottom="48dp"
             style="@style/TextInputLayoutStyle"
             app:hintTextAppearance="@style/AuthLabels"
-            app:layout_constraintTop_toBottomOf="@id/savingsCL"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayout8"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="30dp"
+
             android:layout_marginStart="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="30dp">
@@ -452,7 +370,7 @@
 
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/amount"
+                android:id="@+id/amount_loan"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/edit_text_layout"
@@ -465,10 +383,46 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+
+        <RelativeLayout
+            android:id="@+id/spinnerlay"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
+            android:background="@drawable/border_layout"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="12dp"
+                android:src="@drawable/ic_loan"
+                >
+
+            </ImageView>
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/LoanInfo"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="1dp"
+                android:hint="Bank Information">
+
+            </androidx.appcompat.widget.AppCompatSpinner>
+
+        </RelativeLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/next_estimate"
+        android:id="@+id/next_estimate_loan"
         style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

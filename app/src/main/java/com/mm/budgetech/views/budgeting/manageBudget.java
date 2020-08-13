@@ -43,6 +43,7 @@ public class manageBudget extends AppCompatActivity {
         Objects.requireNonNull(actionBar).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.appPrimaryColor)));
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setCustomView(R.layout.actionbar_layout);
+
         addnew = (Button)findViewById(R.id.add_new);
 
         reference.addValueEventListener(new ValueEventListener() {
@@ -50,6 +51,11 @@ public class manageBudget extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
+
+                item_name.clear();
+                item_amount.clear();
+                initRecyclerView();
+                recyclerViewAdapter.notifyDataSetChanged();
                 long value = dataSnapshot.child(appUserUID).child("Budgeting").getChildrenCount();
                 for(DataSnapshot ds : dataSnapshot.child(appUserUID).child("Budgeting").getChildren()) {
                     String name = ds.getKey();
@@ -57,7 +63,7 @@ public class manageBudget extends AppCompatActivity {
                     item_amount.add(dataSnapshot.child(appUserUID).child("Budgeting").child(name).getValue().toString());
                     // System.out.println(item_amount.get(0));
                 }
-                initRecyclerView();
+
                 System.out.println(value);
 
             }
