@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -26,7 +28,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
+import static com.mm.budgetech.static_constants.amount_record;
 import static com.mm.budgetech.static_constants.appUserUID;
+import static com.mm.budgetech.static_constants.childName;
+import static com.mm.budgetech.static_constants.date_record;
+import static com.mm.budgetech.static_constants.des_record;
+import static com.mm.budgetech.static_constants.parentName;
+import static com.mm.budgetech.static_constants.recyclerViewAdapterRecord;
 import static com.mm.budgetech.static_constants.reference;
 
 public class add_saving_goal extends AppCompatActivity {
@@ -55,6 +63,7 @@ public class add_saving_goal extends AppCompatActivity {
 
     String ID;
     TextView back;
+    String currentTime;
 
 
     @Override
@@ -265,7 +274,7 @@ public class add_saving_goal extends AppCompatActivity {
             public void onClick(View v) {
                 if(view != null)
                 {
-                    reference.child(appUserUID).child("Record_Keeping").child(ID)
+                    reference.child(appUserUID)
                             .addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -276,12 +285,58 @@ public class add_saving_goal extends AppCompatActivity {
                                     ID_child = ID + size;
                                     Calendar calendar = Calendar.getInstance();
                                     calendar.add(Calendar.MONTH, Integer.parseInt(description.getText().toString()));
-                                    String currentTime = java.text.DateFormat.getDateTimeInstance().format(calendar.getTime());
+                                    currentTime = java.text.DateFormat.getDateTimeInstance().format(calendar.getTime());
                                     if(!description.getText().toString().isEmpty() && !amount.getText().toString().isEmpty())
                                     {
-                                        reference.child(appUserUID).child("Savings").child(ID).child("AmountTotal").setValue(amount.getText().toString());
-                                        reference.child(appUserUID).child("Savings").child(ID).child("TimeLeft").setValue(currentTime);
-                                        reference.child(appUserUID).child("Savings").child(ID).child("AmountSaved").setValue(0);
+                                        int months = Integer.parseInt(description.getText().toString());
+                                        int goalAmount = Integer.parseInt(amount.getText().toString());
+                                        int monthlyDivision = goalAmount/months;
+                                        float income = Float.parseFloat(dataSnapshot.child("Income").getValue().toString());
+                                        float percent =  income * 0.1f;
+                                        System.out.println(percent);
+
+                                        if (monthlyDivision <= percent )
+                                        {
+                                            reference.child(appUserUID).child("Savings").child(ID).child("AmountTotal").setValue(amount.getText().toString());
+                                            reference.child(appUserUID).child("Savings").child(ID).child("TimeLeft").setValue(currentTime);
+                                            reference.child(appUserUID).child("Savings").child(ID).child("AmountSaved").setValue(0);
+                                            reference.child(appUserUID).child("Savings").child(ID).child("MonthlyDivision").setValue(amount.getText().toString());
+
+                                        }
+                                        else
+                                        {
+                                            AlertDialog.Builder builder = new AlertDialog.Builder(add_saving_goal.this);
+                                            builder.setMessage("This goal seems unrealistic (Refer to insights for details), would you still like to add it?").setTitle("Warning")
+                                                    .setCancelable(false) .setNegativeButton("Yes",
+                                                    new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                            dialog.dismiss();
+                                                            reference.child(appUserUID).child("Savings").child(ID).child("AmountTotal").setValue(amount.getText().toString());
+                                                            reference.child(appUserUID).child("Savings").child(ID).child("TimeLeft").setValue(currentTime);
+                                                            reference.child(appUserUID).child("Savings").child(ID).child("AmountSaved").setValue(0);
+                                                            reference.child(appUserUID).child("Savings").child(ID).child("MonthlyDivision").setValue(amount.getText().toString());
+                                                            //String parentName = item_names.get(position).replaceAll("[^A-Za-z]","");
+
+
+                                                        }
+                                                    })
+                                                    .setPositiveButton("No", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                            dialog.cancel();
+                                                            Toast.makeText(getApplicationContext(),"Cancelled",
+                                                                    Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                            AlertDialog alert = builder.create();
+                                            alert.show();
+                                        }
+
+
+//                                        reference.child(appUserUID).child("Savings").child(ID).child("AmountTotal").setValue(amount.getText().toString());
+//                                        reference.child(appUserUID).child("Savings").child(ID).child("TimeLeft").setValue(currentTime);
+//                                        reference.child(appUserUID).child("Savings").child(ID).child("AmountSaved").setValue(0);
 
 
 

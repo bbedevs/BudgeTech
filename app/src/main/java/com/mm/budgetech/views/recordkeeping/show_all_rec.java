@@ -20,10 +20,12 @@ import com.mm.budgetech.views.loans.fragments.RecyclerViewAdapterLoansRec;
 import static com.mm.budgetech.static_constants.amount_loans_rec;
 import static com.mm.budgetech.static_constants.amount_record;
 import static com.mm.budgetech.static_constants.appUserUID;
+import static com.mm.budgetech.static_constants.childName;
 import static com.mm.budgetech.static_constants.date_loans_rec;
 import static com.mm.budgetech.static_constants.date_record;
 import static com.mm.budgetech.static_constants.des_record;
 import static com.mm.budgetech.static_constants.name_loans_rec;
+import static com.mm.budgetech.static_constants.parentName;
 import static com.mm.budgetech.static_constants.recyclerViewAdapterLoansRec;
 import static com.mm.budgetech.static_constants.recyclerViewAdapterRecord;
 import static com.mm.budgetech.static_constants.reference;
@@ -48,13 +50,18 @@ public class show_all_rec extends Fragment {
                 des_record.clear();
                 amount_record.clear();
                 date_record.clear();
+                childName.clear();
+                parentName.clear();
                 initRecyclerView(root);
                 recyclerViewAdapterRecord.notifyDataSetChanged();
                 //long value = dataSnapshot.child(appUserUID).child("Loans").child("LoansToReceive").getChildrenCount();
                 for(DataSnapshot dataSnapshot1: dataSnapshot.child(appUserUID).child("Record_Keeping").getChildren())
                 {
+                    String pName = dataSnapshot1.getKey();
+                    parentName.add(pName);
                     for (DataSnapshot ds : dataSnapshot.child(appUserUID).child("Record_Keeping").child(dataSnapshot1.getKey()).getChildren()) {
                         String name = ds.getKey();
+                        childName.add(name);
                         System.out.println(name);
                         des_record.add(dataSnapshot.child(appUserUID).child("Record_Keeping").child(dataSnapshot1.getKey()).child(name).child("description").getValue().toString());
                         amount_record.add(dataSnapshot.child(appUserUID).child("Record_Keeping").child(dataSnapshot1.getKey()).child(name).child("amount").getValue().toString() + " PKR");

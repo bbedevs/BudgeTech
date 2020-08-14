@@ -17,13 +17,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mm.budgetech.R;
 import com.mm.budgetech.services.budgeting.setUserInfo;
 import com.mm.budgetech.views.budgeting.estimated_monthly_expense;
+import com.mm.budgetech.views.navigation.bottom_navigation;
 
 
 public class user_information extends AppCompatActivity {
     
 
     AppCompatSpinner bankInformation;
-    AppCompatEditText email, phone, loan, location, savings;
+    AppCompatEditText email, phone, income, location, savings;
     ArrayAdapter<String> adapter;
     String[] banks = {"Select Your Bank", "Habib Bank Limited", "Bank of Punjab", "Faysal Bank", "National Bank of Pakistan", "Meezan Bank"};
 
@@ -47,7 +48,7 @@ public class user_information extends AppCompatActivity {
 
         email = findViewById(R.id.info_email);
         phone = findViewById(R.id.info_phone);
-        loan = findViewById(R.id.info_loan);
+        income = findViewById(R.id.info_income);
         savings = findViewById(R.id.info_Savings);
         location = findViewById(R.id.info_location);
         bankInformation =  findViewById(R.id.BankInfo);
@@ -63,10 +64,21 @@ public class user_information extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            boolean fromSettings = getIntent().getBooleanExtra("fromSettings", false);
 
-            info.setInfo(email, phone, bankInformation, loan, location, savings);
-            Intent estimated_monthly_expense = new Intent(getApplicationContext(), estimated_monthly_expense.class);
-            startActivity(estimated_monthly_expense);
+            if(fromSettings == false)
+            {
+                info.setInfo(email, phone, bankInformation, income, location, savings);
+                Intent estimated_monthly_expense = new Intent(getApplicationContext(), estimated_monthly_expense.class);
+                startActivity(estimated_monthly_expense);
+            }
+            else if (fromSettings == true)
+            {
+                info.setInfo(email, phone, bankInformation, income, location, savings);
+                Intent estimated_monthly_expense = new Intent(getApplicationContext(), bottom_navigation.class);
+                startActivity(estimated_monthly_expense);
+            }
+
 
             }
         });

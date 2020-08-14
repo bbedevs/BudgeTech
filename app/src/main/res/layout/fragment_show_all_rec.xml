@@ -47,23 +47,6 @@
             android:textSize="30dp"/>
 
 
-        <Button
-            android:id="@+id/reset_all_rec"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/auth_button_signup_layout"
-            android:text="Delete"
-            app:layout_constraintTop_toBottomOf="@id/manageBudgetTV"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="40dp"
-            android:layout_marginStart="75dp"
-            android:layout_marginEnd="75dp"
-
-
-            />
-
-
         <ProgressBar
             android:id="@+id/monthlyprogress_allfragrec"
             android:layout_width="50dp"
@@ -78,11 +61,11 @@
             android:id="@+id/show_data_all_rec"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@id/reset_all_rec"
+            app:layout_constraintTop_toBottomOf="@id/manageBudgetTV"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="160dp">
+            android:layout_marginTop="60dp"
+            app:layout_constraintStart_toStartOf="parent">
 
 
         </androidx.recyclerview.widget.RecyclerView>

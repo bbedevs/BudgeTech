@@ -9,6 +9,7 @@ import com.mm.budgetech.model.User;
 import com.mm.budgetech.services.RecyclerViewAdapter;
 import com.mm.budgetech.views.loans.fragments.RecyclerViewAdapterLoansPaid;
 import com.mm.budgetech.views.loans.fragments.RecyclerViewAdapterLoansRec;
+import com.mm.budgetech.views.navigation.fragments.RecyclerViewAdapterInsights;
 import com.mm.budgetech.views.recordkeeping.RecyclerViewAdapterRecord;
 import com.mm.budgetech.views.savings.RecyclerViewAdapterSavings;
 
@@ -46,7 +47,12 @@ public class static_constants {
     public static  ArrayList<String> des_record = new ArrayList<>();
     public static  ArrayList<String> amount_record = new ArrayList<>();
     public static  ArrayList<String> date_record = new ArrayList<>();
+    public static  ArrayList<String> parentName = new ArrayList<>();
+    public static  ArrayList<String> childName = new ArrayList<>();
     public static RecyclerViewAdapterRecord recyclerViewAdapterRecord;
+
+    public static ArrayList<String> insights_list = new ArrayList<>();
+    public static RecyclerViewAdapterInsights recyclerViewAdapterInsights;
 
 
 

@@ -175,14 +175,14 @@
 
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/info_loan"
+                android:id="@+id/info_income"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/edit_text_layout"
                 android:drawableStart="@drawable/baseline_money_24"
                 android:drawablePadding="5dp"
                 android:drawableTint="@color/appIcons"
-                android:hint="Loan Taken"
+                android:hint="Income"
                 android:inputType="text"
                 android:padding="5dp" />
 

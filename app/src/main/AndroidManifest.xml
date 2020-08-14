@@ -3,6 +3,7 @@
     package="com.mm.budgetech">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +21,12 @@
             android:exported="true" />
 
         <receiver android:name=".services.BroadCastReceiver" />
+
+        <receiver android:name=".services.SmsReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
 
         <activity android:name=".views.loans.add_new_loan" />
         <activity android:name=".views.loans.loans" />
@@ -63,7 +70,8 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".views.auth.sign_up" />
-        <activity android:name=".views.user_info.user_information" />
+        <activity android:name=".views.user_info.user_information"
+            android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>

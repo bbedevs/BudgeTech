@@ -1,7 +1,10 @@
 package com.mm.budgetech.views;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,8 +14,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.mm.budgetech.R;
+import com.mm.budgetech.views.loans.loans;
+import com.mm.budgetech.views.recordkeeping.record_keeping_frags;
+import com.mm.budgetech.views.savings.savings_main;
 
 import org.w3c.dom.Text;
+
+import java.util.Objects;
 
 import static com.mm.budgetech.static_constants.amount_saved;
 import static com.mm.budgetech.static_constants.amount_total;
@@ -39,6 +47,12 @@ public class wallet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallet);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setElevation(0);
+        Objects.requireNonNull(actionBar).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.appPrimaryColor)));
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionBar.setCustomView(R.layout.actionbar_layout);
+
         current_balance = findViewById(R.id.current_balance);
         total_savings = findViewById(R.id.total_savings);
         loans_paid = findViewById(R.id.total_loans_paid);
@@ -53,7 +67,7 @@ public class wallet extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                current_balance.setText(dataSnapshot.child(appUserUID).child("Current_Balance").getValue().toString() + " PKR");
+                current_balance.setText(dataSnapshot.child(appUserUID).child("Remaining").getValue().toString() + " PKR");
                 total_savings.setText(dataSnapshot.child(appUserUID).child("Savings_Total").getValue().toString() + " PKR");
                 loans_paid.setText(dataSnapshot.child(appUserUID).child("Loans_Paid_Total").getValue().toString() + " PKR");
                 loans_receive.setText(dataSnapshot.child(appUserUID).child("Loans_Received_Total").getValue().toString() + " PKR");
@@ -70,6 +84,17 @@ public class wallet extends AppCompatActivity {
 
     public void records_button_func(View v)
     {
-
+        Intent i = new Intent(getApplicationContext(), record_keeping_frags.class );
+        startActivity(i);
+    }
+    public void savings_button_func(View v)
+    {
+        Intent i = new Intent(getApplicationContext(), savings_main.class );
+        startActivity(i);
+    }
+    public void loans_button_func(View v)
+    {
+        Intent i = new Intent(getApplicationContext(), loans.class );
+        startActivity(i);
     }
 }

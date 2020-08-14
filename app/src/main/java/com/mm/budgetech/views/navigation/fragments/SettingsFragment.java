@@ -31,14 +31,15 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.settings_fragment, container, false);
         ProfileBtn = root.findViewById(R.id.profile_button);
-        HelpBtn = root.findViewById(R.id.help_button);
-        ContactBtn = root.findViewById(R.id.contact_button);
+        //HelpBtn = root.findViewById(R.id.help_button);
+       // ContactBtn = root.findViewById(R.id.contact_button);
         LogOutBtn = root.findViewById(R.id.logout_button);
 
         ProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(),  user_information.class );
+                i.putExtra("fromSettings", true);
                 startActivity(i);
             }
         });

@@ -41,6 +41,7 @@ public class Menu_Fragment extends Fragment {
         record_diary = root.findViewById(R.id.record_diary_button);
         savings = root.findViewById(R.id.savings_button);
         loans = root.findViewById(R.id.loans_button);
+        wallet = root.findViewById(R.id.wallet_button);
 
         monthly_budget.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -56,6 +56,9 @@ public class add_new_record extends AppCompatActivity {
     AppCompatEditText amount;
     AppCompatEditText description;
 
+    int current_Amount;
+    int amountText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -250,17 +253,43 @@ public class add_new_record extends AppCompatActivity {
             public void onClick(View v) {
                 if (view != null) {
 
-                    reference.child(appUserUID).child("Record_Keeping").child(ID)
-                            .addListenerForSingleValueEvent(new ValueEventListener() {
+                    reference.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     // get total available quest
+
                                     int size = (int) dataSnapshot.getChildrenCount();
                                     size = size + 1;
                                     System.out.println(size);
                                     ID_child = ID + size;
+                                    amountText = Integer.parseInt(amount.getText().toString());
+
+                                    if (dataSnapshot.child(appUserUID).hasChild("Record_Keeping_Totals")) {
+
+                                        if (dataSnapshot.child(appUserUID).child("Record_Keeping_Totals").hasChild(ID)) {
+                                         current_Amount = Integer.parseInt(dataSnapshot.child(appUserUID).child("Record_Keeping_Totals").child(ID).
+                                                 child("Total_Amount").getValue().toString());
+                                         current_Amount = current_Amount + amountText;
+                                         reference.child(appUserUID).child("Record_Keeping_Totals").child(ID).child("Total_Amount").setValue(current_Amount);
+
+
+                                        }
+                                        else
+                                        {
+                                            reference.child(appUserUID).child("Record_Keeping_Totals").child(ID).child("Total_Amount").setValue(current_Amount);
+                                        }
+
+                                    }
+
                                     String currentTime = java.text.DateFormat.getDateTimeInstance().format(new Date());
                                     System.out.println(currentTime);
+                                    int balance = Integer.parseInt(dataSnapshot.child(appUserUID).child("Remaining").getValue().toString());
+                                    if (balance >= amountText)
+                                    {
+                                        int updated_balance = balance - amountText;
+                                       reference.child(appUserUID).child("Remaining").setValue(updated_balance);
+
+                                    }
                                     reference.child(appUserUID).child("Record_Keeping").child(ID).child(ID_child).child("amount").setValue(amount.getText().toString());
                                     reference.child(appUserUID).child("Record_Keeping").child(ID).child(ID_child).child("date").setValue(currentTime);
                                     if(!description.getText().toString().isEmpty())

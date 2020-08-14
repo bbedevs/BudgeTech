@@ -501,8 +501,8 @@
                 android:drawablePadding="7dp"
                 android:drawableTint="@color/appIcons"
                 android:gravity="start"
-                android:hint="Add Time Duration"
-                android:inputType="text"
+                android:hint="Add Duration (Months)"
+                android:inputType="number"
                  />
 
         </com.google.android.material.textfield.TextInputLayout>
