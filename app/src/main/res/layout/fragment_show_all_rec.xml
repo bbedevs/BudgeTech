@@ -46,6 +46,20 @@
             android:text="View Records"
             android:textSize="30dp"/>
 
+        <TextView
+            android:id="@+id/NTS_Rec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text = "Nothing to show yet..."
+            android:textColor="@color/appPrimaryColor"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"/>
 
         <ProgressBar
             android:id="@+id/monthlyprogress_allfragrec"
@@ -70,6 +84,22 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
+
+        <TextView
+            android:id="@+id/gobackshowrec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&lt;Back "
+            android:textColor="@color/appPrimaryColor"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="8dp"
+            android:clickable="true"
+
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

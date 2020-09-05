@@ -17,15 +17,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.mm.budgetech.R;
+import com.mm.budgetech.views.navigation.bottom_navigation;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -42,6 +45,7 @@ public class add_record extends Fragment {
 
     Button addFirstRec;
     Button scanImagebtn;
+    TextView back;
     private int IMAGE_RESULT_CODE = 534;
     private EditText mScannedText;
     String ID_child;
@@ -58,6 +62,7 @@ public class add_record extends Fragment {
 
         addFirstRec = root.findViewById(R.id.add_first_rec);
         scanImagebtn = root.findViewById(R.id.scan_img);
+        back = root.findViewById(R.id.tv1);
 
         ID = "Scanned";
 
@@ -76,6 +81,14 @@ public class add_record extends Fragment {
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, IMAGE_RESULT_CODE);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity().getApplicationContext(), bottom_navigation.class);
+                startActivity(i);
             }
         });
         return root;
@@ -102,7 +115,7 @@ public class add_record extends Fragment {
                         stringBuilder.append("\n");
                     }
                    // mScannedText.setText(stringBuilder.toString());
-                   // System.out.println(stringBuilder.toString());
+                     System.out.println(stringBuilder.toString());
                     categoryRecordDefine(stringBuilder.toString().toLowerCase());
 
                 }
@@ -115,18 +128,11 @@ public class add_record extends Fragment {
         }
     }
 
-    void categoryRecordDefine(String scannedText)
+    void categoryRecordDefine(final String scannedText)
     {
-//        if (scannedText.contains("Food") || scannedText.contains("Burger") || scannedText.contains("food") || scannedText.contains("burger")
-//                || scannedText.contains("Chicken") || scannedText.contains("chicken") || scannedText.contains("fries") || scannedText.contains("Fries")
-//                || scannedText.contains("pizza") || scannedText.contains("bbq") || scannedText.contains("karahi") || scannedText.contains("boti")
-//                || scannedText.contains("drink") || scannedText.contains("daal")
-//        )
-//        {
-//
-//        }
 
-        if (scannedText.contains("total") || scannedText.contains("bill") || scannedText.contains("amount")
+        if (scannedText.contains("total") || scannedText.contains("bill") || scannedText.contains("amount") ||
+                scannedText.contains("grand total")
                 )
         {
             String[] split = scannedText.split("total");
@@ -157,9 +163,12 @@ public class add_record extends Fragment {
                             ID_child = ID + size;
                             String currentTime = java.text.DateFormat.getDateTimeInstance().format(new Date());
                             System.out.println(currentTime);
+                            String temp = scannedText.replace("\n", " ");
                             reference.child(appUserUID).child("Record_Keeping").child(ID).child(ID_child).child("amount").setValue(total_amount);
                             reference.child(appUserUID).child("Record_Keeping").child(ID).child(ID_child).child("date").setValue(currentTime);
                             reference.child(appUserUID).child("Record_Keeping").child(ID).child(ID_child).child("description").setValue("Scanned Record");
+                            reference.child(appUserUID).child("Record_Keeping").child(ID).child(ID_child).child("detail_description").setValue(temp);
+
 
 
                         }
@@ -183,4 +192,10 @@ public class add_record extends Fragment {
     {
         return Pattern.compile( "[0-9]" ).matcher( s ).find();
     }
+    public void estimateDone(View v)
+    {
+        Intent i = new Intent(getApplicationContext(), record_keeping_frags.class);
+        startActivity(i);
+    }
+
 }

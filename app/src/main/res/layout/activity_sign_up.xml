@@ -18,6 +18,19 @@
 
     </View>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fill the entries to register or you can also use Facebook or Google to Log In"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="14sp"
+        android:textColor="@color/whiteTransparent"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        android:layout_marginTop="30dp"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="300dp"

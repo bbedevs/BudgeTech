@@ -15,11 +15,17 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.mm.budgetech.R;
 import com.mm.budgetech.services.budgeting.monthlyBudget;
 import com.mm.budgetech.views.navigation.bottom_navigation;
 
+import java.util.Date;
+
 import static com.mm.budgetech.static_constants.appUserUID;
+import static com.mm.budgetech.static_constants.name_stats;
 import static com.mm.budgetech.static_constants.reference;
 
 public class add_new_loan extends AppCompatActivity {
@@ -49,6 +55,8 @@ public class add_new_loan extends AppCompatActivity {
 
     String[] loans = {"Select Loan Type", "Loan Amount To be Paid Back", "Loan Amount to be Received"};
 
+    String nameString;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +64,11 @@ public class add_new_loan extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_loan);
 
 
-        ActionBar actionBar = getSupportActionBar();
+
+        final ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.appPrimaryColor)));
         actionBar.hide();
+
 
 
         foodFAB = findViewById(R.id.emergency_loan);
@@ -96,7 +106,7 @@ public class add_new_loan extends AppCompatActivity {
                         view.setPressed(false);
                     }
                     v.setPressed(true);
-                    ID =  estimation.amountAddFABaction_loan(v, amount, getApplicationContext());
+                    ID =  estimation.amountAddFABaction_loan(v, name, getApplicationContext());
                     view = v;
                 }
                 return  true;
@@ -115,7 +125,7 @@ public class add_new_loan extends AppCompatActivity {
                         view.setPressed(false);
                     }
                     v.setPressed(true);
-                    ID =  estimation.amountAddFABaction_loan(v, amount, getApplicationContext());
+                    ID =  estimation.amountAddFABaction_loan(v, name, getApplicationContext());
                     view = v;
                 }
                 return  true;
@@ -134,7 +144,7 @@ public class add_new_loan extends AppCompatActivity {
                         view.setPressed(false);
                     }
                     v.setPressed(true);
-                    ID =  estimation.amountAddFABaction_loan(v, amount, getApplicationContext());
+                    ID =  estimation.amountAddFABaction_loan(v, name, getApplicationContext());
                     view = v;
                 }
                 return  true;
@@ -153,7 +163,7 @@ public class add_new_loan extends AppCompatActivity {
                         view.setPressed(false);
                     }
                     v.setPressed(true);
-                    ID =  estimation.amountAddFABaction_loan(v, amount, getApplicationContext());
+                    ID =  estimation.amountAddFABaction_loan(v, name, getApplicationContext());
                     view = v;
                 }
                 return  true;
@@ -172,7 +182,7 @@ public class add_new_loan extends AppCompatActivity {
                         view.setPressed(false);
                     }
                     v.setPressed(true);
-                    ID =  estimation.amountAddFABaction_loan(v, amount, getApplicationContext());
+                    ID =  estimation.amountAddFABaction_loan(v, name, getApplicationContext());
                     view = v;
                 }
                 return  true;
@@ -191,7 +201,7 @@ public class add_new_loan extends AppCompatActivity {
                         view.setPressed(false);
                     }
                     v.setPressed(true);
-                    ID =  estimation.amountAddFABaction_loan(v, amount, getApplicationContext());
+                    ID =  estimation.amountAddFABaction_loan(v, name, getApplicationContext());
                     view = v;
                 }
                 return  true;
@@ -202,56 +212,154 @@ public class add_new_loan extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(view != null)
+
+                if(!name.getText().toString().isEmpty() && !amount.getText().toString().isEmpty())
                 {
-                    if(loan_spinner.getSelectedItem().toString() == "Select Loan Type") {
-                        Toast.makeText(getApplicationContext(), "Select Loan Type", Toast.LENGTH_SHORT).show();
+
+                    try {
+
+                        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                // get total available quest
+
+
+                                if(view != null)
+                                {
+
+                                    if(loan_spinner.getSelectedItem().toString() == "Select Loan Type") {
+                                        Toast.makeText(getApplicationContext(), "Select Loan Type", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else if (loan_spinner.getSelectedItem().toString() == "Loan Amount To be Paid Back")
+                                    {
+
+                                        view.setPressed(false);
+                                        view = null;
+
+                                        int amountUser = Integer.parseInt(amount.getText().toString());
+                                        int amountCurrentBalance = Integer.parseInt(dataSnapshot.child(appUserUID).child("Remaining").getValue().toString());
+                                        int amountNew = amountUser + amountCurrentBalance;
+
+                                        int size = (int) dataSnapshot.child(appUserUID).child("Loans").child("LoansToPaid").getChildrenCount();
+                                        size = size + 1;
+                                        nameString = name.getText().toString() + "_" + size;
+
+
+                                        int totalLoan = Integer.parseInt(dataSnapshot.child(appUserUID).child("Loans_Paid_Total").getValue().toString());
+                                        totalLoan = totalLoan + amountUser;
+                                        reference.child(appUserUID).child("Loans_Paid_Total").setValue(totalLoan);
+
+                                        reference.child(appUserUID).child("Loans").child("LoansToPaid").child(nameString).child("Category").setValue(ID);
+                                        reference.child(appUserUID).child("Loans").child("LoansToPaid").child(nameString).child("Amount").setValue(amount.getText().toString());
+
+                                        DialogueBoxLoans dialogueBoxLoans = new DialogueBoxLoans(add_new_loan.this, nameString, loan_spinner.getSelectedItem().toString(), amountNew);
+                                        dialogueBoxLoans.setCancelable(false);
+                                        dialogueBoxLoans.show();
+                                    }
+                                    else if (loan_spinner.getSelectedItem().toString() == "Loan Amount to be Received")
+                                    {
+                                        int size = (int) dataSnapshot.child(appUserUID).child("Loans").child("LoansToReceive").getChildrenCount();
+                                        size = size + 1;
+                                        nameString = name.getText().toString() +"_"+ size;
+
+                                        int amountUser = Integer.parseInt(amount.getText().toString());
+                                        int amountCurrentBalance = Integer.parseInt(dataSnapshot.child(appUserUID).child("Remaining").getValue().toString());
+                                        int amountNew = amountCurrentBalance - amountUser;
+
+                                        view.setPressed(false);
+                                        view = null;
+
+                                        int totalLoan = Integer.parseInt(dataSnapshot.child(appUserUID).child("Loans_Received_Total").getValue().toString());
+                                        totalLoan = totalLoan + amountUser;
+                                        reference.child(appUserUID).child("Loans_Received_Total").setValue(totalLoan);
+
+                                        reference.child(appUserUID).child("Loans").child("LoansToReceive").child(nameString).child("Category").setValue(ID);
+                                        reference.child(appUserUID).child("Loans").child("LoansToReceive").child(nameString).child("Amount").setValue(amount.getText().toString());
+                                        DialogueBoxLoans dialogueBoxLoans = new DialogueBoxLoans(add_new_loan.this, nameString, loan_spinner.getSelectedItem().toString(), amountNew);
+                                        dialogueBoxLoans.setCancelable(false);
+                                        dialogueBoxLoans.show();
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    if(loan_spinner.getSelectedItem().toString() == "Select Loan Type") {
+                                        Toast.makeText(getApplicationContext(), "Select Loan Type", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else if (loan_spinner.getSelectedItem().toString() == "Loan Amount To be Paid Back")
+                                    {
+                                        //view.setPressed(false);
+                                        // view = null;
+
+                                        int amountUser = Integer.parseInt(amount.getText().toString());
+                                        int amountCurrentBalance = Integer.parseInt(dataSnapshot.child(appUserUID).child("Remaining").getValue().toString());
+                                        int amountNew = amountUser + amountCurrentBalance;
+
+                                        int size = (int) dataSnapshot.child(appUserUID).child("Loans").child("LoansToPaid").getChildrenCount();
+                                        size = size + 1;
+                                        String nameString = name.getText().toString() + "_" + size;
+
+                                        int totalLoan = Integer.parseInt(dataSnapshot.child(appUserUID).child("Loans_Paid_Total").getValue().toString());
+                                        totalLoan = totalLoan + amountUser;
+                                        reference.child(appUserUID).child("Loans_Paid_Total").setValue(totalLoan);
+
+                                        reference.child(appUserUID).child("Loans").child("LoansToPaid").child(nameString).child("Category").setValue("Custom");
+                                        reference.child(appUserUID).child("Loans").child("LoansToPaid").child(nameString).child("Amount").setValue(amount.getText().toString());
+                                        DialogueBoxLoans dialogueBoxLoans = new DialogueBoxLoans(add_new_loan.this, nameString, loan_spinner.getSelectedItem().toString(), amountNew);
+                                        dialogueBoxLoans.setCancelable(false);
+                                        dialogueBoxLoans.show();
+
+
+                                    }
+                                    else if (loan_spinner.getSelectedItem().toString() == "Loan Amount to be Received")
+                                    {
+                                        //  view.setPressed(false);
+                                        //view = null;
+                                        int size = (int) dataSnapshot.child(appUserUID).child("Loans").child("LoansToReceive").getChildrenCount();
+                                        size = size + 1;
+                                        nameString = name.getText().toString() +"_"+ size;
+
+                                        int amountUser = Integer.parseInt(amount.getText().toString());
+                                        int amountCurrentBalance = Integer.parseInt(dataSnapshot.child(appUserUID).child("Remaining").getValue().toString());
+                                        int amountNew = amountCurrentBalance - amountUser;
+
+                                        int totalLoan = Integer.parseInt(dataSnapshot.child(appUserUID).child("Loans_Received_Total").getValue().toString());
+                                        totalLoan = totalLoan + amountUser;
+                                        reference.child(appUserUID).child("Loans_Received_Total").setValue(totalLoan);
+
+                                        reference.child(appUserUID).child("Loans").child("LoansToReceive").child(nameString).child("Category").setValue("Custom");
+                                        reference.child(appUserUID).child("Loans").child("LoansToReceive").child(nameString).child("Amount").setValue(amount.getText().toString());
+                                        DialogueBoxLoans dialogueBoxLoans = new DialogueBoxLoans(add_new_loan.this, nameString, loan_spinner.getSelectedItem().toString(), amountNew);
+                                        dialogueBoxLoans.setCancelable(false);
+                                        dialogueBoxLoans.show();
+                                    }
+
+
+                                }
+
+
+                            }
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+
                     }
-                   else if (loan_spinner.getSelectedItem().toString() == "Loan Amount To be Paid Back")
+                    catch (Exception e)
                     {
-                        view.setPressed(false);
-                        view = null;
-                        reference.child(appUserUID).child("Loans").child("LoansToPaid").child(name.getText().toString()).child("Category").setValue(ID);
-                        reference.child(appUserUID).child("Loans").child("LoansToPaid").child(name.getText().toString()).child("Amount").setValue(amount.getText().toString());
-
-                    }
-                    else if (loan_spinner.getSelectedItem().toString() == "Loan Amount to be Received")
-                    {
-                        view.setPressed(false);
-                        view = null;
-                        reference.child(appUserUID).child("Loans").child("LoansToReceive").child(name.getText().toString()).child("Category").setValue(ID);
-                        reference.child(appUserUID).child("Loans").child("LoansToReceive").child(name.getText().toString()).child("Amount").setValue(amount.getText().toString());
 
                     }
 
-                    DialogueBoxLoans dialogueBoxLoans = new DialogueBoxLoans(add_new_loan.this, name.getText().toString(), loan_spinner.getSelectedItem().toString());
-                    dialogueBoxLoans.show();
                 }
                 else
                 {
-                    if(loan_spinner.getSelectedItem().toString() == "Select Loan Type") {
-                        Toast.makeText(getApplicationContext(), "Select Loan Type", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (loan_spinner.getSelectedItem().toString() == "Loan Amount To be Paid Back")
-                    {
-                        //view.setPressed(false);
-                       // view = null;
-                        reference.child(appUserUID).child("Loans").child("LoansToPaid").child(name.getText().toString()).child("Category").setValue("Custom");
-                        reference.child(appUserUID).child("Loans").child("LoansToPaid").child(name.getText().toString()).child("Amount").setValue(amount.getText().toString());
-
-                    }
-                    else if (loan_spinner.getSelectedItem().toString() == "Loan Amount to be Received")
-                    {
-                      //  view.setPressed(false);
-                        //view = null;
-                        reference.child(appUserUID).child("Loans").child("LoansToReceive").child(name.getText().toString()).child("Category").setValue("Custom");
-                        reference.child(appUserUID).child("Loans").child("LoansToReceive").child(name.getText().toString()).child("Amount").setValue(amount.getText().toString());
-
-                    }
-
-                    DialogueBoxLoans dialogueBoxLoans = new DialogueBoxLoans(add_new_loan.this, name.getText().toString(), loan_spinner.getSelectedItem().toString());
-                    dialogueBoxLoans.show();
+                    Toast.makeText(getApplicationContext(), "Enter All Fields", Toast.LENGTH_SHORT).show();
                 }
+
+
 
             }
         });
@@ -259,11 +367,20 @@ public class add_new_loan extends AppCompatActivity {
 
 
     }
+    @Override
+     public void onBackPressed()
+    {
+
+        this.finish();
+    }
 
     public void estimateDone(View v)
     {
         Intent i = new Intent(getApplicationContext(), loans.class);
         startActivity(i);
+        this.finish();
     }
+
+
 
 }

@@ -17,19 +17,26 @@ import com.mm.budgetech.views.navigation.fragments.Menu_Fragment;
 import com.mm.budgetech.views.navigation.fragments.NotificationFragment;
 import com.mm.budgetech.views.navigation.fragments.SettingsFragment;
 
+import java.util.Objects;
+
 public class bottom_navigation extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation);
-
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.appPrimaryColor)));
-        actionBar.hide();
+        actionBar.setElevation(0);
+        Objects.requireNonNull(actionBar).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.appPrimaryColor)));
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionBar.setCustomView(R.layout.actionbar_layout);
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
+        bottomNavigationView.setSelectedItemId(R.id.nav_menu);
+
+
 
     }
 

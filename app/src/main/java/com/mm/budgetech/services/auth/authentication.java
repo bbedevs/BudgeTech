@@ -35,8 +35,12 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.mm.budgetech.model.User;
 import com.mm.budgetech.views.auth.sign_up;
+import com.mm.budgetech.views.navigation.bottom_navigation;
 import com.mm.budgetech.views.user_info.user_information;
 
 import org.json.JSONException;
@@ -45,6 +49,9 @@ import static com.mm.budgetech.static_constants.EMAIL;
 import static com.mm.budgetech.static_constants.Prefs;
 import static com.mm.budgetech.static_constants.appUser;
 import static com.mm.budgetech.static_constants.appUserUID;
+import static com.mm.budgetech.static_constants.item_amount;
+import static com.mm.budgetech.static_constants.item_name;
+import static com.mm.budgetech.static_constants.recyclerViewAdapter;
 import static com.mm.budgetech.static_constants.reference;
 
 public class authentication {
@@ -85,7 +92,7 @@ public class authentication {
 
     //SignUpusingEmailandPassword
 
-    public void SignUpUsingEmailandPassword(final String email, final String password,final String Username,  final Context SignUpContext) {
+    public void SignUpUsingEmailandPassword(final String email, final String password ,final String Username,  final Context SignUpContext) {
         System.out.println(email);
         System.out.println(password);
         final FirebaseAuth firebaseAuth;
@@ -128,8 +135,10 @@ public class authentication {
 
     //SignInUsingEmailandPassword
 
-    public void SignInUsingEmailandPassword(String email, String password, final Context authentication_context) {
+    public void SignInUsingEmailandPassword(final String email, String password, final Context authentication_context) {
         final FirebaseAuth firebaseAuth;
+        System.out.println(email);
+        System.out.println(password);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener((new OnCompleteListener<AuthResult>() {
@@ -138,10 +147,43 @@ public class authentication {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("success", "signInWithEmail:success");
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            final FirebaseUser user = firebaseAuth.getCurrentUser();
                             appUser = new User(user.getUid());
-                            Intent user_info = new Intent(authentication_context, user_information.class);
-                            authentication_context.startActivity(user_info);
+                            appUserUID = appUser.uid;
+                            appUser.email = email;
+                         //   appUser.username = user.getDisplayName();
+                            //  appUser.phonenum = user.getPhoneNumber();
+                            reference.child(appUserUID).child("Email").setValue(appUser.email);
+                            sharedPref(authentication_context, appUserUID, appUser.username, appUser.email, appUser.phonenum);
+
+                            // reference.child(appUserUID).child("Username").setValue(appUser.username);
+                           // reference.child(appUserUID).child("PhoneNumber").setValue(appUser.phonenum);
+
+                            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                    if (dataSnapshot.child(appUserUID).hasChild("Income"))
+                                    {
+                                        Intent user_info = new Intent(authentication_context, bottom_navigation.class);
+                                        user_info.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        authentication_context.startActivity(user_info);
+
+                                    }
+                                    else
+                                    {
+                                        Intent user_info = new Intent(authentication_context, user_information.class);
+                                        user_info.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        authentication_context.startActivity(user_info);
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(DatabaseError error) {
+                                    // Failed to read value
+                                }
+                            });
+
+
                             Toast.makeText(authentication_context, "Signed In", Toast.LENGTH_SHORT).show();
 
                             //  updateUI(user);
@@ -216,8 +258,33 @@ public class authentication {
                             reference.child(appUserUID).child("Email").setValue(appUser.email);
                             reference.child(appUserUID).child("Username").setValue(appUser.username);
                             reference.child(appUserUID).child("PhoneNumber").setValue(appUser.phonenum);
-                            Intent user_info = new Intent(FBContext, user_information.class);
-                            FBContext.startActivity(user_info);
+                            sharedPref(FBContext, appUserUID, appUser.username, appUser.email, appUser.phonenum);
+
+                            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                    if (dataSnapshot.child(appUserUID).hasChild("Income"))
+                                    {
+                                        Intent user_info = new Intent(FBContext, bottom_navigation.class);
+                                        user_info.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        FBContext.startActivity(user_info);
+                                    }
+                                    else
+                                    {
+                                        Intent user_info = new Intent(FBContext, user_information.class);
+                                        user_info.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        FBContext.startActivity(user_info);
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(DatabaseError error) {
+                                    // Failed to read value
+                                }
+                            });
+
+
+
                            // updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -304,8 +371,34 @@ public class authentication {
                                 reference.child(appUserUID).child("Email").setValue(appUser.email);
                                 reference.child(appUserUID).child("Username").setValue(appUser.username);
                                 reference.child(appUserUID).child("PhoneNumber").setValue(appUser.phonenum);
-                                Intent user_info = new Intent(GoogleContext, user_information.class);
-                                GoogleContext.startActivity(user_info);
+
+                                reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                        if (dataSnapshot.child(appUserUID).hasChild("Income"))
+                                        {
+                                            System.out.println("incomeeeeeeeeeeee");
+                                            Intent user_info = new Intent(GoogleContext, bottom_navigation.class);
+                                            user_info.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            GoogleContext.startActivity(user_info);
+                                        }
+                                        else
+                                        {
+                                            Intent user_info = new Intent(GoogleContext, user_information.class);
+                                            user_info.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            GoogleContext.startActivity(user_info);
+                                        }
+                                    }
+                                    @Override
+                                    public void onCancelled(DatabaseError error) {
+                                        // Failed to read value
+                                    }
+                                });
+
+
+
+
                              //   updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.

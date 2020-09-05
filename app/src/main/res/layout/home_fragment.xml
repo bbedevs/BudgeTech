@@ -8,17 +8,26 @@
     <View
         android:id="@+id/view3"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:background="@color/appPrimaryColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
-
-
-
     </View>
 
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Insights"
+        android:textColor="@color/white"
+        android:textSize="42sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,32 +44,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:elevation="5dp"
-        android:layout_marginTop="90dp">
+        android:layout_marginTop="80dp">
 
-        <TextView
-            android:id="@+id/home_done"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Exit"
-            android:textColor="@color/appPrimaryColor"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:clickable="true"
-            android:onClick="estimateDoneHome"
-            />
 
         <TextView
             android:id="@+id/home_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Insights"
+            android:text="Following are some useful insights that you should cater"
             android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:textStyle="italic"
+            android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,42 +66,47 @@
             android:gravity="center_horizontal" />
 
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/main_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:orientation="vertical"
-            android:layout_marginTop="100dp"
-            android:padding="1dp">
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:ignore="MissingConstraints">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
         <ProgressBar
             android:id="@+id/monthlyprogress_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:indeterminateTint="@color/appPrimaryColor"
-            >
+            android:indeterminateTint="@color/appPrimaryColor"/>
 
-        </ProgressBar>
+
+            <TextView
+                android:id="@+id/NTS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text = "Nothing to show yet..."
+                android:textColor="@color/appPrimaryColor"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,11 +13,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-
-
-
     </View>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Here you can view the progress of your saving goals or add a new one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="14sp"
+        android:textColor="@color/whiteTransparent"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        android:layout_marginTop="20dp"/>
 
 
 
@@ -36,19 +46,19 @@
         app:layout_constraintTop_toTopOf="parent"
         android:elevation="5dp"
         android:layout_marginTop="90dp">
-        back_add_sav
+
         <TextView
             android:id="@+id/savings_done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Done "
+            android:text="&lt;Back "
             android:textColor="@color/appPrimaryColor"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginStart="8dp"
             android:clickable="true"
             android:onClick="estimateDoneSavings"
             />
@@ -57,56 +67,44 @@
             android:id="@+id/saving_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:text="Manage Saving Goals"
             android:textAlignment="center"
-            android:textSize="18sp"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.068"
-            android:gravity="center_horizontal" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
 
-        <Button
-            android:id="@+id/Add_new_button"
+        <TextView
+            android:id="@+id/cs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/saving_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp"
+            android:text="Loading.."
+            android:textSize="20dp"/>
+
+
+        <TextView
+            android:id="@+id/NTS_Saving"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginTop="60dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="ADD NEW "
-            android:background="@drawable/auth_button_layout"
-            android:textColor="@color/white"
+            android:text = "Nothing to show yet..."
+            android:textColor="@color/appPrimaryColor"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/saving_id" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/main_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@id/Add_new_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:orientation="vertical"
-            android:layout_marginTop="190dp"
-            android:padding="1dp">
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/card_recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:ignore="MissingConstraints">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"/>
 
         <ProgressBar
             android:id="@+id/monthlyprogress_save"
@@ -117,10 +115,42 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:indeterminateTint="@color/appPrimaryColor"
-        >
+            >
 
         </ProgressBar>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/Add_new_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="ADD NEW "
+            android:background="@drawable/auth_button_layout"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cs" />
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/card_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="190dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

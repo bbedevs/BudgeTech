@@ -37,6 +37,7 @@ public class record_keeping_frags extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_keeping_frags);
 
+
 //        toolbar = findViewById(R.id.appbar_loan);
         //setSupportActionBar(toolbar);
 

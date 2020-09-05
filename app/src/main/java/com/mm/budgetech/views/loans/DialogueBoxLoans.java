@@ -1,12 +1,14 @@
 package com.mm.budgetech.views.loans;
 
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -31,24 +33,28 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 import static com.mm.budgetech.static_constants.appUserUID;
 import static com.mm.budgetech.static_constants.item_amount;
 import static com.mm.budgetech.static_constants.recyclerViewAdapter;
+import static com.mm.budgetech.static_constants.recyclerViewAdapterSavings;
 import static com.mm.budgetech.static_constants.reference;
 
 public class DialogueBoxLoans extends Dialog implements View.OnClickListener {
 
 
     FloatingActionButton done_loan;
+    FloatingActionButton cancel;
     DatePicker datePicker;
     Context context;
     String name;
     String loanType;
+    int amount;
+    String[] splitName;
 
 
-
-    public DialogueBoxLoans(@NonNull Context context, String name, String loanType) {
+    public DialogueBoxLoans(@NonNull Context context, String name, String loanType, int amount) {
         super(context);
         this.context = context;
         this.name = name;
         this.loanType = loanType;
+        this.amount = amount;
 
 
     }
@@ -61,8 +67,11 @@ public class DialogueBoxLoans extends Dialog implements View.OnClickListener {
         setContentView(R.layout.dialogue_box_loans);
         CreateNotificationChannel();
         done_loan = findViewById(R.id.done_loan_reminder);
+        cancel = findViewById(R.id.done_loan_reminderCancel);
         datePicker = findViewById(R.id.date_loan);
         done_loan.setOnClickListener(this);
+        cancel.setOnClickListener(this);
+        splitName = name.split("_");
 
     }
 
@@ -76,7 +85,43 @@ public class DialogueBoxLoans extends Dialog implements View.OnClickListener {
                 if(loanType == "Loan Amount To be Paid Back")
                 {
                     reference.child(appUserUID).child("Loans").child("LoansToPaid").child(name).child("Date").setValue(date);
+                    name = "To " + splitName[0];
                     createNotification();
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("Would you like to add this amount in your current balance?").setTitle("Update Current Balance")
+                            .setCancelable(false) .setNegativeButton("Yes",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    reference.child(appUserUID).child("Remaining").setValue(amount);
+                                    Intent i = new Intent(context, loans.class);
+                                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    context.startActivity(i);
+                                    dialog.dismiss();
+
+                                }
+                            })
+                            .setPositiveButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                    Intent i = new Intent(context, loans.class);
+                                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    context.startActivity(i);
+                                    Toast.makeText(context,"Loan added without updating current balance",
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            });
+                  final   AlertDialog alert = builder.create();
+                    alert.setOnShowListener( new OnShowListener() {
+                        @Override
+                        public void onShow(DialogInterface arg0) {
+                            alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(context.getResources().getColor(R.color.appPrimaryColor));
+                            alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(context.getResources().getColor(R.color.appPrimaryColor));
+                        }
+                    });
+                    alert.show();
 
 
 
@@ -84,19 +129,86 @@ public class DialogueBoxLoans extends Dialog implements View.OnClickListener {
                 else if (loanType == "Loan Amount to be Received")
                 {
                     reference.child(appUserUID).child("Loans").child("LoansToReceive").child(name).child("Date").setValue(date);
+                    name = "From " + splitName;
                     createNotification();
 
 
-                }
-            dismiss();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("Would you like to subtract this amount in your current balance?").setTitle("Update Current Balance")
+                            .setCancelable(false) .setNegativeButton("Yes",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    reference.child(appUserUID).child("Remaining").setValue(amount);
+                                    dialog.dismiss();
 
+                                }
+                            })
+                            .setPositiveButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                    Toast.makeText(context,"Cancelled",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                   final AlertDialog alert = builder.create();
+                    alert.setOnShowListener( new OnShowListener() {
+                        @Override
+                        public void onShow(DialogInterface arg0) {
+                            alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(context.getResources().getColor(R.color.appPrimaryColor));
+                            alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(context.getResources().getColor(R.color.appPrimaryColor));
+                        }
+                    });
+                    alert.show();
+
+
+                }
+                Toast.makeText(context, "Loan Added with Reminder", Toast.LENGTH_LONG).show();
+
+                dismiss();
+
+            }
+            else
+            {
+                Toast.makeText(context, "Loan Added without Reminder", Toast.LENGTH_LONG).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Would you like to update your current balance?").setTitle("Update Current Balance")
+                        .setCancelable(false) .setNegativeButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                reference.child(appUserUID).child("Remaining").setValue(amount);
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .setPositiveButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                                Toast.makeText(context,"Cancelled",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                final AlertDialog alert = builder.create();
+                alert.setOnShowListener( new OnShowListener() {
+                    @Override
+                    public void onShow(DialogInterface arg0) {
+                        alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(context.getResources().getColor(R.color.appPrimaryColor));
+                        alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(context.getResources().getColor(R.color.appPrimaryColor));
+                    }
+                });
+                alert.show();
+
+                dismiss();
             }
     }
 
     public void createNotification () {
         Intent myIntent = new Intent(getApplicationContext() , BroadCastReceiver.class ) ;
         myIntent.putExtra("title", loanType);
-        myIntent.putExtra("content", "To "+name);
+        myIntent.putExtra("content", name);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0 , myIntent , 0 ) ;
         Calendar calendar = Calendar.getInstance () ;

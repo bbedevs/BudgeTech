@@ -39,6 +39,7 @@ public class monthlyBudget {
             val = "Investing";
         }
 
+        amount.getText().clear();
         amount.requestFocus();
         amount.setFocusableInTouchMode(true);
         InputMethodManager imm = (InputMethodManager) estimateContext.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -67,7 +68,7 @@ public class monthlyBudget {
         } else if (v.getId() == R.id.investing_rec) {
             val2 = "Investing";
         }
-
+        amount.getText().clear();
         amount.requestFocus();
         amount.setFocusableInTouchMode(true);
         InputMethodManager imm = (InputMethodManager) estimateContext.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -92,11 +93,11 @@ public class monthlyBudget {
         } else if (v.getId() == R.id.entertainment_sav) {
             val3 =  "Entertainment";
         } else if (v.getId() == R.id.savings_sav) {
-            val3 =  "Savings";
+            val3 =  "Custom";
         } else if (v.getId() == R.id.investing_sav) {
             val3 = "Investing";
         }
-
+        amount.getText().clear();
         amount.requestFocus();
         amount.setFocusableInTouchMode(true);
         InputMethodManager imm = (InputMethodManager) estimateContext.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -120,6 +121,7 @@ public class monthlyBudget {
         } else if (v.getId() == R.id.health_loan) {
             val4 = "Health";
         }
+        amount.getText().clear();
         amount.requestFocus();
         amount.setFocusableInTouchMode(true);
         InputMethodManager imm = (InputMethodManager) estimateContext.getSystemService(Context.INPUT_METHOD_SERVICE);

@@ -13,33 +13,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
     </View>
+
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="470dp"
         android:text="Fill the entries to save a loan record"
-        android:textColor="@color/appIcons"
-        android:textSize="16sp"
-        android:textAlignment="center"
-
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.24">
+        android:textSize="14sp"
+        android:textColor="@color/whiteTransparent"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        android:layout_marginTop="30dp"/>
 
-    </TextView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="500dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="100dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="90dp"
         android:background="@color/white"
         android:elevation="5dp"
@@ -52,14 +47,14 @@
             android:id="@+id/tv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Done "
+            android:text="&lt;Back "
             android:textColor="@color/appPrimaryColor"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginStart="8dp"
             android:clickable="true"
             android:onClick="estimateDone"
             />
@@ -92,10 +87,10 @@
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_gravity="left|top"
                 android:backgroundTint="@color/appSecondaryColor"
                 android:tint="@color/white"
-                app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                android:src="@drawable/baseline_local_hospital_24"
+                app:fabCustomSize="70dp"
                 app:useCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -122,9 +117,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@+id/foodCL"
+            app:layout_constraintEnd_toStartOf="@id/transportCL"
             android:layout_marginTop="80dp"
-            android:layout_marginStart="20dp"
-
             >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -132,10 +126,10 @@
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_gravity="left|top"
+                android:src="@drawable/baseline_house_24"
                 android:backgroundTint="@color/appSecondaryColor"
                 android:tint="@color/white"
-                app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                app:fabCustomSize="70dp"
                 app:useCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -163,7 +157,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/housingCL"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="80dp"
             android:layout_marginStart="20dp">
 
@@ -172,10 +166,10 @@
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_gravity="left|top"
+                android:src="@drawable/baseline_commute_24"
                 android:backgroundTint="@color/appSecondaryColor"
                 android:tint="@color/white"
-                app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                app:fabCustomSize="70dp"
                 app:useCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -211,10 +205,10 @@
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_gravity="left|top"
                 android:backgroundTint="@color/appSecondaryColor"
+                android:src="@drawable/baseline_receipt_24"
                 android:tint="@color/white"
-                app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                app:fabCustomSize="70dp"
                 app:useCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -245,7 +239,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/housingCL"
             app:layout_constraintStart_toEndOf="@+id/billutilCL"
-            android:layout_marginStart="20dp"
+            app:layout_constraintEnd_toStartOf="@id/healthCL"
 
             >
 
@@ -255,10 +249,10 @@
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_gravity="left|top"
                 android:backgroundTint="@color/appSecondaryColor"
+                android:src="@drawable/baseline_security_24"
                 android:tint="@color/white"
-                app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                app:fabCustomSize="70dp"
                 app:useCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -284,7 +278,7 @@
             android:id="@+id/healthCL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@+id/insuranceCL"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/transportCL"
             android:layout_marginStart="20dp">
 
@@ -293,10 +287,10 @@
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_gravity="left|top"
                 android:backgroundTint="@color/appSecondaryColor"
+                android:src="@drawable/baseline_healing_24"
                 android:tint="@color/white"
-                app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                app:fabCustomSize="70dp"
                 app:useCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

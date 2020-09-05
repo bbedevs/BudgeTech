@@ -70,7 +70,6 @@ public class add_saving_goal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_saving_goal);
-
         ActionBar actionBar = getSupportActionBar();
         Objects.requireNonNull(actionBar).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.appPrimaryColor)));
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -274,64 +273,83 @@ public class add_saving_goal extends AppCompatActivity {
             public void onClick(View v) {
                 if(view != null)
                 {
-                    reference.child(appUserUID)
-                            .addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    // get total available quest
-                                    int size = (int) dataSnapshot.getChildrenCount();
-                                    size = size + 1;
-                                    System.out.println(size);
-                                    ID_child = ID + size;
-                                    Calendar calendar = Calendar.getInstance();
-                                    calendar.add(Calendar.MONTH, Integer.parseInt(description.getText().toString()));
-                                    currentTime = java.text.DateFormat.getDateTimeInstance().format(calendar.getTime());
-                                    if(!description.getText().toString().isEmpty() && !amount.getText().toString().isEmpty())
-                                    {
-                                        int months = Integer.parseInt(description.getText().toString());
-                                        int goalAmount = Integer.parseInt(amount.getText().toString());
-                                        int monthlyDivision = goalAmount/months;
-                                        float income = Float.parseFloat(dataSnapshot.child("Income").getValue().toString());
-                                        float percent =  income * 0.1f;
-                                        System.out.println(percent);
-
-                                        if (monthlyDivision <= percent )
+                    try {
+                        reference.child(appUserUID)
+                                .addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        // get total available quest
+                                        int size = (int) dataSnapshot.getChildrenCount();
+                                        size = size + 1;
+                                        System.out.println(size);
+                                        ID_child = ID + size;
+                                        Calendar calendar = Calendar.getInstance();
+                                        calendar.add(Calendar.MONTH, Integer.parseInt(description.getText().toString()));
+                                        currentTime = java.text.DateFormat.getDateTimeInstance().format(calendar.getTime());
+                                        if(!description.getText().toString().isEmpty() && !amount.getText().toString().isEmpty())
                                         {
-                                            reference.child(appUserUID).child("Savings").child(ID).child("AmountTotal").setValue(amount.getText().toString());
-                                            reference.child(appUserUID).child("Savings").child(ID).child("TimeLeft").setValue(currentTime);
-                                            reference.child(appUserUID).child("Savings").child(ID).child("AmountSaved").setValue(0);
-                                            reference.child(appUserUID).child("Savings").child(ID).child("MonthlyDivision").setValue(amount.getText().toString());
+                                            int months = Integer.parseInt(description.getText().toString());
+                                            int goalAmount = Integer.parseInt(amount.getText().toString());
+                                            int monthlyDivision = goalAmount/months;
+                                            float income = Float.parseFloat(dataSnapshot.child("Income").getValue().toString());
+                                            float percent =  income * 0.1f;
+                                            System.out.println(percent);
 
-                                        }
-                                        else
-                                        {
-                                            AlertDialog.Builder builder = new AlertDialog.Builder(add_saving_goal.this);
-                                            builder.setMessage("This goal seems unrealistic (Refer to insights for details), would you still like to add it?").setTitle("Warning")
-                                                    .setCancelable(false) .setNegativeButton("Yes",
-                                                    new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog, int which) {
-                                                            dialog.dismiss();
-                                                            reference.child(appUserUID).child("Savings").child(ID).child("AmountTotal").setValue(amount.getText().toString());
-                                                            reference.child(appUserUID).child("Savings").child(ID).child("TimeLeft").setValue(currentTime);
-                                                            reference.child(appUserUID).child("Savings").child(ID).child("AmountSaved").setValue(0);
-                                                            reference.child(appUserUID).child("Savings").child(ID).child("MonthlyDivision").setValue(amount.getText().toString());
-                                                            //String parentName = item_names.get(position).replaceAll("[^A-Za-z]","");
+                                            if (monthlyDivision <= percent )
+                                            {
+                                                reference.child(appUserUID).child("Savings").child(ID).child("AmountTotal").setValue(amount.getText().toString());
+                                                reference.child(appUserUID).child("Savings").child(ID).child("TimeLeft").setValue(currentTime);
+                                                reference.child(appUserUID).child("Savings").child(ID).child("AmountSaved").setValue(0);
+                                                reference.child(appUserUID).child("Savings").child(ID).child("MonthlyDivision").setValue(amount.getText().toString());
+                                                Toast.makeText(getApplicationContext(),"Saving Goal Added",
+                                                        Toast.LENGTH_LONG).show();
+                                                Intent i = new Intent(getApplicationContext(), savings_main.class);
+                                                startActivity(i);
+                                                finish();
+
+                                            }
+                                            else
+                                            {
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(add_saving_goal.this);
+                                                builder.setMessage("This goal seems unrealistic (Refer to insights for details), would you still like to add it?").setTitle("Warning")
+                                                        .setCancelable(false) .setNegativeButton("Yes",
+                                                        new DialogInterface.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                dialog.dismiss();
+                                                                reference.child(appUserUID).child("Savings").child(ID).child("AmountTotal").setValue(amount.getText().toString());
+                                                                reference.child(appUserUID).child("Savings").child(ID).child("TimeLeft").setValue(currentTime);
+                                                                reference.child(appUserUID).child("Savings").child(ID).child("AmountSaved").setValue(0);
+                                                                reference.child(appUserUID).child("Savings").child(ID).child("MonthlyDivision").setValue(amount.getText().toString());
+                                                                Intent i = new Intent(getApplicationContext(), savings_main.class);
+                                                                startActivity(i);
+                                                                finish();
+
+                                                                Toast.makeText(getApplicationContext(), "Saving Goal Added", Toast.LENGTH_LONG).show();
+
+                                                                //String parentName = item_names.get(position).replaceAll("[^A-Za-z]","");
 
 
-                                                        }
-                                                    })
-                                                    .setPositiveButton("No", new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog, int which) {
-                                                            dialog.cancel();
-                                                            Toast.makeText(getApplicationContext(),"Cancelled",
-                                                                    Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    });
-                                            AlertDialog alert = builder.create();
-                                            alert.show();
-                                        }
+                                                            }
+                                                        })
+                                                        .setPositiveButton("No", new DialogInterface.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                dialog.cancel();
+                                                                Toast.makeText(getApplicationContext(),"Saving Goal Not Added",
+                                                                        Toast.LENGTH_LONG).show();
+                                                            }
+                                                        });
+                                                final AlertDialog alert = builder.create();
+                                                alert.setOnShowListener( new DialogInterface.OnShowListener() {
+                                                    @Override
+                                                    public void onShow(DialogInterface arg0) {
+                                                        alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.appPrimaryColor));
+                                                        alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.appPrimaryColor));
+                                                    }
+                                                });
+                                                alert.show();
+                                            }
 
 
 //                                        reference.child(appUserUID).child("Savings").child(ID).child("AmountTotal").setValue(amount.getText().toString());
@@ -340,18 +358,25 @@ public class add_saving_goal extends AppCompatActivity {
 
 
 
+                                        }
+                                        else
+                                        {
+                                            Toast.makeText(getApplicationContext(), "Enter Fields", Toast.LENGTH_SHORT).show();
+
+                                        }
                                     }
-                                    else
-                                    {
-                                        Toast.makeText(getApplicationContext(), "Enter Fields", Toast.LENGTH_SHORT).show();
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
 
                                     }
-                                }
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
+                                });
 
-                                }
-                            });
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+
 
                     view.setPressed(false);
                     view = null;
@@ -375,5 +400,13 @@ public class add_saving_goal extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onBackPressed()
+    {
+
+        finish();
+    }
+
 
 }

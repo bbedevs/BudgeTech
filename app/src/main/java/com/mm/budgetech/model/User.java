@@ -2,7 +2,7 @@ package com.mm.budgetech.model;
 
 public class User {
 
-    public String email, username, phonenum, bankname, location, loan, savings;
+    public String email, username, phonenum, bankname, location, income, currentBalance , savings;
     public String uid;
     public User(String id)
     {
@@ -10,13 +10,14 @@ public class User {
     }
     public User() {}
 
-   public void userInformation(String email, String phonenum, String bankname, String location, String loan,  String savinngs )
+   public void userInformation(String email, String phonenum, String bankname, String location, String income, String currentBalance, String savinngs )
     {
         email = this.email;
         phonenum = this.phonenum;
         bankname = this.bankname;
         location = this.location;
-        loan = this.loan;
+        income = this.income;
+        currentBalance = this.currentBalance;
         savinngs = this.savings;
     }
 

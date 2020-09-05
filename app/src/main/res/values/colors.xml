@@ -19,5 +19,8 @@
     <color name="orange">#FF7322</color>
     <color name="green">#117C2E</color>
     <color name="red">#CB1010</color>
+    <color name="whiteTransparent">#7EFFFFFF</color>
+    <color name="appBack">#124556</color>
+
 
 </resources>

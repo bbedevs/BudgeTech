@@ -10,18 +10,37 @@
     <View
         android:id="@+id/view3"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:background="@color/appPrimaryColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
     </View>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fill the entries so that BudgeTech may help you in maintaining your budget"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="14sp"
+        android:textColor="@color/whiteTransparent"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        android:layout_marginTop="10dp"/>
+
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="300dp"
-        android:layout_height="500dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@color/white"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -37,11 +56,9 @@
             android:textStyle="bold"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="430dp"
-            >
+            android:layout_marginTop="35dp"            >
 
         </TextView>
 
@@ -55,7 +72,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="70dp"
             >
 
 
@@ -183,7 +200,34 @@
                 android:drawablePadding="5dp"
                 android:drawableTint="@color/appIcons"
                 android:hint="Income"
-                android:inputType="text"
+                android:inputType="number"
+                android:padding="5dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout17"
+            android:layout_width="250dp"
+            android:layout_height="0dp"
+            style="@style/TextInputLayoutStyle"
+            app:hintTextAppearance="@style/AuthLabels"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayout12"
+            >
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/info_CurrentBalance"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_text_layout"
+                android:drawableStart="@drawable/baseline_account_balance_wallet_24"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/appIcons"
+                android:hint="Current Balance"
+                android:inputType="number"
                 android:padding="5dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -198,7 +242,7 @@
             app:hintTextAppearance="@style/AuthLabels"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textInputLayout12"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayout17"
             >
 
 
@@ -211,27 +255,30 @@
                 android:drawablePadding="5dp"
                 android:drawableTint="@color/appIcons"
                 android:hint="Current Savings"
-                android:inputType="text"
+                android:inputType="number"
                 android:padding="5dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/next"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:backgroundTint="@color/appPrimaryColor"
+            android:tint="@color/white"
+           app:layout_constraintTop_toBottomOf="@id/textInputLayout13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/baseline_arrow_forward_24"
+            tools:layout_editor_absoluteY="655dp"
+            android:layout_marginTop="15dp"/>
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/next"
-        style="@style/Widget.MaterialComponents.FloatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:backgroundTint="@color/appPrimaryColor"
-        android:tint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="502dp"
-        app:srcCompat="@drawable/baseline_arrow_forward_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

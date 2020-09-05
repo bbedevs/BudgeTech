@@ -3,6 +3,7 @@ package com.mm.budgetech.views;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.mm.budgetech.R;
 import com.mm.budgetech.views.loans.loans;
+import com.mm.budgetech.views.navigation.bottom_navigation;
 import com.mm.budgetech.views.recordkeeping.record_keeping_frags;
 import com.mm.budgetech.views.savings.savings_main;
 
@@ -63,22 +65,31 @@ public class wallet extends AppCompatActivity {
         savings_button = findViewById(R.id.total_savings_button);
         loans_button = findViewById(R.id.total_loans_button);
 
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+        try {
+            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @SuppressLint("SetTextI18n")
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
 
-                current_balance.setText(dataSnapshot.child(appUserUID).child("Remaining").getValue().toString() + " PKR");
-                total_savings.setText(dataSnapshot.child(appUserUID).child("Savings_Total").getValue().toString() + " PKR");
-                loans_paid.setText(dataSnapshot.child(appUserUID).child("Loans_Paid_Total").getValue().toString() + " PKR");
-                loans_receive.setText(dataSnapshot.child(appUserUID).child("Loans_Received_Total").getValue().toString() + " PKR");
+                    current_balance.setText(dataSnapshot.child(appUserUID).child("Remaining").getValue().toString() + " PKR");
+                    total_savings.setText(dataSnapshot.child(appUserUID).child("Savings_Total").getValue().toString() + " PKR");
+                    loans_paid.setText(dataSnapshot.child(appUserUID).child("Loans_Paid_Total").getValue().toString() + " PKR");
+                    loans_receive.setText(dataSnapshot.child(appUserUID).child("Loans_Received_Total").getValue().toString() + " PKR");
 
-            }
+                }
 
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-            }
-        });
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+                }
+            });
+
+        }
+        catch (Exception e)
+        {
+
+        }
+
 
     }
 
@@ -97,4 +108,11 @@ public class wallet extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(), loans.class );
         startActivity(i);
     }
+
+    public void estimateDone(View v)
+    {
+        Intent i = new Intent(getApplicationContext(), bottom_navigation.class);
+        startActivity(i);
+    }
+
 }

@@ -245,15 +245,20 @@ public class estimated_monthly_expense extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            if(view != null)
+
+                String amountStr = amount.getText().toString();
+                System.out.println(amountStr + "hiiiii");
+            if(view != null  && !amountStr.isEmpty())
             {
                 view.setPressed(false);
                 view = null;
+                System.out.println(amount.getText().toString());
                 reference.child(appUserUID).child("Budgeting").child(ID).setValue(amount.getText().toString());
+                Toast.makeText(getApplicationContext(), "Record Added", Toast.LENGTH_SHORT).show();
             }
             else
             {
-                Toast.makeText(getApplicationContext(), "Select a Category First", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Select a category and add an amount", Toast.LENGTH_SHORT).show();
             }
 
             }
@@ -264,7 +269,9 @@ public class estimated_monthly_expense extends AppCompatActivity {
 
     public void estimateDone(View v)
     {
-        Intent i = new Intent(getApplicationContext(), bottom_navigation.class);
+        Intent i = new Intent(estimated_monthly_expense.this, bottom_navigation.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
+        this.finish();
     }
 }

@@ -13,33 +13,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
     </View>
+
+
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="470dp"
         android:text="Choose these following Categories to divide your expenses"
-        android:textColor="@color/appIcons"
-        android:textSize="16sp"
-        android:textAlignment="center"
-
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.24">
+        android:textSize="14sp"
+        android:textColor="@color/whiteTransparent"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        android:layout_marginTop="40dp"/>
 
-    </TextView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="500dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="100dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="90dp"
         android:background="@color/white"
         android:elevation="5dp"
@@ -52,9 +48,9 @@
             android:id="@+id/tv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Done "
+            android:text="Next&gt; "
             android:textColor="@color/appPrimaryColor"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -89,12 +85,12 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/food"
             style="@style/Widget.MaterialComponents.FloatingActionButton"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="left|top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:backgroundTint="@color/appSecondaryColor"
             android:tint="@color/white"
-            app:fabCustomSize="@android:dimen/notification_large_icon_width"
+            android:src="@drawable/baseline_fastfood_24"
+            app:fabCustomSize="70dp"
             app:useCompatPadding="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -121,20 +117,21 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@+id/foodCL"
+            app:layout_constraintEnd_toStartOf="@id/transportCL"
             android:layout_marginTop="80dp"
-            android:layout_marginStart="20dp"
 
             >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/housing"
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="left|top"
                 android:backgroundTint="@color/appSecondaryColor"
                 android:tint="@color/white"
-                app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                android:src="@drawable/baseline_house_24"
+                app:fabCustomSize="70dp"
                 app:useCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -162,26 +159,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/housingCL"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="80dp"
-            android:layout_marginStart="20dp">
+           >
+
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/transport"
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_gravity="left|top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:backgroundTint="@color/appSecondaryColor"
+                android:src="@drawable/baseline_commute_24"
                 android:tint="@color/white"
-                app:fabCustomSize="@android:dimen/notification_large_icon_width"
-                app:useCompatPadding="true"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:fabCustomSize="70dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                />
-
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:useCompatPadding="true" />
 
             <TextView
                 android:id="@+id/ctg3"
@@ -208,12 +206,12 @@
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/billutil"
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_gravity="left|top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:backgroundTint="@color/appSecondaryColor"
                 android:tint="@color/white"
-                app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                android:src="@drawable/baseline_receipt_24"
+                app:fabCustomSize="70dp"
                 app:useCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -237,27 +235,25 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/insuranceCL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/housingCL"
             app:layout_constraintStart_toEndOf="@+id/billutilCL"
-            android:layout_marginStart="20dp"
-
+            app:layout_constraintEnd_toStartOf="@id/healthCL"
             >
 
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/insurance"
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_gravity="left|top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:backgroundTint="@color/appSecondaryColor"
                 android:tint="@color/white"
-                app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                app:fabCustomSize="70dp"
+                android:src="@drawable/baseline_security_24"
                 app:useCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -283,19 +279,20 @@
             android:id="@+id/healthCL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@+id/insuranceCL"
+            app:layout_constraintEnd_toEndOf="parent"
+
             app:layout_constraintTop_toBottomOf="@+id/transportCL"
-            android:layout_marginStart="20dp">
+          >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/health"
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_gravity="left|top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:backgroundTint="@color/appSecondaryColor"
                 android:tint="@color/white"
-                app:fabCustomSize="@android:dimen/notification_large_icon_width"
+                android:src="@drawable/baseline_healing_24"
+                app:fabCustomSize="70dp"
                 app:useCompatPadding="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -326,12 +323,12 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/entertainment"
             style="@style/Widget.MaterialComponents.FloatingActionButton"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="left|top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:backgroundTint="@color/appSecondaryColor"
             android:tint="@color/white"
-            app:fabCustomSize="@android:dimen/notification_large_icon_width"
+            app:fabCustomSize="70dp"
+            android:src="@drawable/baseline_casino_24"
             app:useCompatPadding="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -361,17 +358,17 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/entertainmentCL"
         app:layout_constraintTop_toBottomOf="@+id/insuranceCL"
-        android:layout_marginStart="20dp">
+        app:layout_constraintEnd_toStartOf="@id/investingCL">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/savings"
             style="@style/Widget.MaterialComponents.FloatingActionButton"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="left|top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:backgroundTint="@color/appSecondaryColor"
             android:tint="@color/white"
-            app:fabCustomSize="@android:dimen/notification_large_icon_width"
+            android:src="@drawable/baseline_save_24"
+            app:fabCustomSize="70dp"
             app:useCompatPadding="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -400,25 +397,24 @@
             android:id="@+id/investingCL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/savingsCL"
             app:layout_constraintTop_toBottomOf="@+id/healthCL"
-            android:layout_marginStart="20dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/investing"
                 style="@style/Widget.MaterialComponents.FloatingActionButton"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_gravity="left|top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:backgroundTint="@color/appSecondaryColor"
+                android:src="@drawable/baseline_input_24"
                 android:tint="@color/white"
-                app:fabCustomSize="@android:dimen/notification_large_icon_width"
-                app:useCompatPadding="true"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:fabCustomSize="70dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-        />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:useCompatPadding="true" />
 
             <TextView
                 android:id="@+id/ctg9"

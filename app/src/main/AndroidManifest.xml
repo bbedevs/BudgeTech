@@ -4,15 +4,19 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo2"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.wallet"></activity>
+        <activity android:name=".views.navigation.fragments.ChatBotActivity"></activity>
+        <activity android:name=".views.wallet" />
         <activity android:name=".views.recordkeeping.record_keeping_frags" />
 
         <service
@@ -20,8 +24,11 @@
             android:enabled="true"
             android:exported="true" />
 
-        <receiver android:name=".services.BroadCastReceiver" />
+        <service android:name=".services.LocationService"
+            android:enabled="true"
+            android:exported="true"/>
 
+        <receiver android:name=".services.BroadCastReceiver" />
         <receiver android:name=".services.SmsReceiver">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
@@ -37,11 +44,7 @@
         <activity android:name=".views.navigation.bottom_navigation" />
         <activity android:name=".views.budgeting.manageBudget" />
         <activity android:name=".views.auth.sign_in">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".views.budgeting.estimated_monthly_expense" />
 
@@ -68,10 +71,17 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".views.auth.sign_up" />
-        <activity android:name=".views.user_info.user_information"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".views.user_info.user_information"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

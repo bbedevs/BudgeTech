@@ -3,6 +3,7 @@ package com.mm.budgetech.views.navigation.fragments;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,7 @@ public class RecyclerViewAdapterInsights extends RecyclerView.Adapter<RecyclerVi
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position)
     {
         System.out.println("Binderrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr ");
+        holder.msg.setMovementMethod(new ScrollingMovementMethod());
         holder.msg.setText(insights.get(position));
     }
 

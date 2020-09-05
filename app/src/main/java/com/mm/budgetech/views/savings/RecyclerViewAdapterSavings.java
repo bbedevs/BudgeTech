@@ -96,10 +96,9 @@ public class RecyclerViewAdapterSavings extends RecyclerView.Adapter<RecyclerVie
             @Override
             public void onClick(View v) {
                   Toast.makeText(mContext, amount_saved.get(position), Toast.LENGTH_LONG).show();
-//                Bundle args = new Bundle();
-//                args.putString("name", item_names.get(position));
                   DialogueBoxSavings dialogueBox = new DialogueBoxSavings(mContext, amount_saved.get(position), item_name_savings.get(position), position, holder.CA );
                   dialogueBox.show();
+
             }
         });
 
@@ -114,7 +113,7 @@ public class RecyclerViewAdapterSavings extends RecyclerView.Adapter<RecyclerVie
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
                                 reference.child(appUserUID).child("Savings").child(item_names.get(position)).setValue(null);
-                                Toast.makeText(mContext,item_names.get(position),
+                                Toast.makeText(mContext,"Deleted",
                                         Toast.LENGTH_SHORT).show();
                                 item_names.remove(position);
                                 timeleft.remove(position);

@@ -9,7 +9,7 @@
     <View
         android:id="@+id/view3"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="75dp"
         android:background="@color/appPrimaryColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -18,42 +18,62 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Wallet Summary"
-        android:textColor="@color/white"
-        android:textSize="42sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Following is an overview of your wallet"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="14sp"
+        android:textColor="@color/whiteTransparent"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        android:layout_marginTop="10dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
+        android:background="@color/white"
+        android:elevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:elevation="5dp"
-        android:layout_marginTop="125dp">
+        app:layout_constraintVertical_bias="0.0">
 
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&lt;Back "
+            android:textColor="@color/appPrimaryColor"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="8dp"
+            android:clickable="true"
+            android:onClick="estimateDone"
+            />
         <TextView
             android:id="@+id/manageBudgetTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:text="Manage Wallet"
             android:textColor="@color/appIcons"
-            android:textSize="30dp">
+            android:textSize="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         </TextView>
 
@@ -61,20 +81,17 @@
             android:id="@+id/cb"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:layout_marginBottom="380dp"
             android:layout_marginTop="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/manageBudgetTV"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintTop_toBottomOf="@id/manageBudgetTV">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="18dp"
                 android:src="@drawable/baseline_toys_24"
                 android:tint="@color/appPrimaryColor"
                 app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +113,7 @@
                 android:id="@+id/current_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="temp"
+                android:text="Loading"
                 android:textColor="@color/orange"
                 android:textSize="40sp"
                 android:textStyle="bold"
@@ -111,37 +128,33 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/manage_rec"
                 android:clickable="true"
+                android:onClick="records_button_func"
                 android:padding="7dp"
                 android:text="Manage Records"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:onClick="records_button_func"/>
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ts"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:layout_marginBottom="200dp"
             android:layout_marginTop="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cb"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintTop_toBottomOf="@id/cb">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="18dp"
                 android:src="@drawable/baseline_toys_24"
                 android:tint="@color/appPrimaryColor"
                 app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +176,7 @@
                 android:id="@+id/total_savings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="temp"
+                android:text="Loading"
                 android:textColor="@color/green"
                 android:textSize="40sp"
                 android:textStyle="bold"
@@ -178,14 +191,14 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/total_save"
                 android:clickable="true"
+                android:onClick="savings_button_func"
                 android:padding="7dp"
                 android:text="Manage Savings"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:onClick="savings_button_func"/>
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -194,20 +207,17 @@
             android:id="@+id/lt"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:layout_marginBottom="200dp"
             android:layout_marginTop="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ts"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintTop_toBottomOf="@id/ts">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="18dp"
                 android:src="@drawable/baseline_toys_24"
                 android:tint="@color/appPrimaryColor"
                 app:layout_constraintStart_toStartOf="parent"
@@ -226,30 +236,29 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-
             <ImageView
                 android:id="@+id/lrci"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
                 android:layout_marginEnd="160dp"
-                android:layout_marginTop="16dp"
                 android:src="@drawable/baseline_toys_24"
                 android:tint="@color/appPrimaryColor"
-                app:layout_constraintStart_toEndOf="@id/lpd"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/lpd"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
                 android:layout_marginTop="19dp"
                 android:layout_marginEnd="3dp"
                 android:text="Loans to be Received"
-                app:layout_constraintStart_toEndOf="@id/lrci"
-                android:layout_marginStart="3dp"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/lrci"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -258,7 +267,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:text="temp"
+                android:text="Loading"
                 android:textColor="@color/red"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -271,7 +280,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:text="temp"
+                android:text="Loading"
                 android:textColor="@color/red"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -287,14 +296,14 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/total_loans"
                 android:clickable="true"
+                android:onClick="loans_button_func"
                 android:padding="7dp"
                 android:text="Manage Loans"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:onClick="loans_button_func"/>
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

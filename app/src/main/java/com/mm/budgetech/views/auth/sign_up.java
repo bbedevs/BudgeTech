@@ -77,7 +77,7 @@ public class sign_up extends AppCompatActivity {
         sign_up_facebook = (FloatingActionButton) findViewById(R.id.facebook_button);
         sign_up_google = (FloatingActionButton) findViewById(R.id.google_button);
         Email = findViewById(R.id.email_sign_up);
-        Password =  findViewById(R.id.email_sign_up);
+        Password =  findViewById(R.id.password_sign_up);
         Username = findViewById(R.id.username);
         auth = new authentication();
 

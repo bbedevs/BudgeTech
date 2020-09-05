@@ -3,8 +3,8 @@
 
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/baseline_home_24"
-        android:title="Home"/>
+        android:icon="@drawable/baseline_visibility_24"
+        android:title="Insights"/>
 
     <item
         android:id="@+id/nav_chatbot"
@@ -22,6 +22,6 @@
 
     <item
         android:id="@+id/nav_notifications"
-        android:icon="@drawable/baseline_notifications_24"
-        android:title="Notificaton"/>
+        android:icon="@drawable/baseline_insert_chart_24"
+        android:title="Stats"/>
 </menu>

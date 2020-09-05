@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/stats_layout"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    android:background="@drawable/recyclerviewedit"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    android:clickable="true"
+    android:elevation="5dp"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/changeAmount"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/baseline_toys_24"
+        android:padding="17dp"
+        android:tint="@color/white"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/setamountlayoutsave"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/name_recordStats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:text="Title"
+        android:textAlignment="center"
+        android:textColor="@color/appIcons"
+        android:textSize="18sp"
+        android:textStyle="bold">
+
+
+    </TextView>
+
+    <ProgressBar
+        android:id="@+id/progress_recordStats"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="18dp" />
+
+
+    <TextView
+        android:id="@+id/amount_used"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:text="Amount Used"
+        android:textSize="12sp"/>
+
+
+    <TextView
+        android:id="@+id/amount_totalStats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="Amount Total"
+        android:textSize="12sp"/>
+
+</RelativeLayout>

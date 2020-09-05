@@ -48,7 +48,7 @@ public class SmsReceiver extends BroadCastReceiver {
                         final String msgBody = msgs[i].getMessageBody();
                         if (msgBody.contains("debited") || msgBody.contains("bill") || msgBody.contains("Bill") ||
                                 msgBody.contains("Debited") ||  msgBody.contains("transferred") || msgBody.contains("Recharge")
-                                || msgBody.contains("Transferred") )
+                                || msgBody.contains("Transferred")  ||  msgBody.contains("Charged") ||  msgBody.contains("charged"))
                         {
                             //String number  = msgBody.replaceAll("[^0-9]", "");
                            // System.out.println(number);

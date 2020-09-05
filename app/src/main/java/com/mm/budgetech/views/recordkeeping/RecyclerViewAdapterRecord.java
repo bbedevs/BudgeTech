@@ -13,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.mm.budgetech.R;
 
 import java.util.ArrayList;
@@ -22,7 +25,9 @@ import static com.mm.budgetech.static_constants.appUserUID;
 import static com.mm.budgetech.static_constants.childName;
 import static com.mm.budgetech.static_constants.date_record;
 import static com.mm.budgetech.static_constants.des_record;
+import static com.mm.budgetech.static_constants.insights_list;
 import static com.mm.budgetech.static_constants.parentName;
+import static com.mm.budgetech.static_constants.recyclerViewAdapterInsights;
 import static com.mm.budgetech.static_constants.recyclerViewAdapterRecord;
 import static com.mm.budgetech.static_constants.recyclerViewAdapterSavings;
 import static com.mm.budgetech.static_constants.reference;
@@ -78,16 +83,55 @@ public class RecyclerViewAdapterRecord extends RecyclerView.Adapter<RecyclerView
 
 
 
-//        holder.CA.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                  Toast.makeText(mContext, item_names.get(position), Toast.LENGTH_LONG).show();
-////                Bundle args = new Bundle();
-////                args.putString("name", item_names.get(position));
-//                  DialogueBox dialogueBox = new DialogueBox(mContext, item_names.get(position), position);
-//                  dialogueBox.show();
-//            }
-//        });
+        holder.CA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(parentName.get(position).equals("SMS") || parentName.get(position).equals("Scanned"))
+                {
+                    System.out.println(parentName.get(position));
+                    System.out.println(childName.get(position));
+                   try
+                   {
+                       reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                           @Override
+                           public void onDataChange(DataSnapshot dataSnapshot) {
+                               AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                               builder.setMessage(dataSnapshot.child(appUserUID).child("Record_Keeping").child(parentName.get(position))
+                                       .child(childName.get(position)).child("detail_description").getValue().toString()).setTitle("Record Details")
+                                       .setCancelable(false) .setNegativeButton("Ok",
+                                       new DialogInterface.OnClickListener() {
+                                           @Override
+                                           public void onClick(DialogInterface dialog, int which) {
+                                               dialog.dismiss();
+                                               //String parentName = item_names.get(position).replaceAll("[^A-Za-z]","");
+                                               // System.out.println(parentName.get(position));
+
+
+                                           }
+                                       });
+
+                               AlertDialog alert = builder.create();
+                               alert.show();
+
+                           }
+
+                           @Override
+                           public void onCancelled(DatabaseError error) {
+                               // Failed to read value
+                           }
+                       });
+
+                   }
+                   catch (Exception e)
+                   {
+                       System.out.println("Error"+ e);
+                   }
+
+
+                }
+
+            }
+        });
 
         holder.CA.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -100,7 +144,7 @@ public class RecyclerViewAdapterRecord extends RecyclerView.Adapter<RecyclerView
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
                                 //String parentName = item_names.get(position).replaceAll("[^A-Za-z]","");
-                                System.out.println(parentName.get(position));
+                               // System.out.println(parentName.get(position));
                                 reference.child(appUserUID).child("Record_Keeping").child(parentName.get(position)).child(childName.get(position)).setValue(null);
                                 Toast.makeText(mContext,item_names.get(position), Toast.LENGTH_SHORT).show();
                                 des_record.remove(position);
